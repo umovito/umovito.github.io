@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html>
-<title>네</title>
 <head>
+<title>네</title>
+<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.8.0/firebase-messaging.js"></script>
 <meta charset="utf-8">
 </head>
 <body>
 <img style="-webkit-user-select: none;background-position: 0px 0px, 10px 10px;background-size: 20px 20px;background-image:linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);" src="http://media-hearth.cursecdn.com/avatars/300/47/42061.gif">
 </body>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB4RJCbI0saLZA0dckE5Yx6MZR1DL-N4Zo",
+    authDomain: "githearth.firebaseapp.com",
+    databaseURL: "https://githearth.firebaseio.com",
+    projectId: "githearth",
+    storageBucket: "githearth.appspot.com",
+    messagingSenderId: "132467703223"
+  };
+  firebase.initializeApp(config);
+
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithRedirect(provider);
+  
+</script>
 </html>
