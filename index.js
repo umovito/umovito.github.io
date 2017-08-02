@@ -11,6 +11,7 @@ $(function() {
       success: function(data) {
         data = JSON.parse(data);
         console.log(data);
+        $("#img").attr('src', data[0]['imgGold']);
       }
     });
   });
