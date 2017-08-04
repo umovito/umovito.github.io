@@ -4,7 +4,6 @@ $(function() {
           e.preventDefault();
           var requrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/' + basiccards[Math.floor(Math.random()*basiccards.length)];
           requrl += '?locale=koKR';
-          console.log(requrl);
           $.ajax({
             method: "GET",
             beforeSend: function(request) {
