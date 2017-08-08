@@ -5,3 +5,4 @@ Random Hearthstone Card Drawing Page
 - Javascript
 - CSS
 - Firebase (Database, Storage)
+- Python (for card image crawling)
