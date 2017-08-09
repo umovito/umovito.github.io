@@ -14,7 +14,7 @@ $(function() {
       $("#desc").text('');
       NProgress.start();
       var rand = Math.floor(Math.random() * 1206);
-      var cardIndexRef = firebase.database().ref('cardindex/' + rand);
+      var cardIndexRef = firebase.database().ref('NumtoID/' + rand);
       cardIndexRef.once('value').then(function(snapshot){
         var requrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/'+ snapshot.val();
         requrl += '?locale=koKR';
@@ -61,8 +61,8 @@ $(function() {
                         break;
                       case 'Hall of Fame':
                         $("#cardSet").text("명예의 전당");
-                        $("#cardSet").css("background-color","#2c1470");
-                        $("#cardSet").css("color","#fffdea");
+                        $("#cardSet").css("background-color","#282828");
+                        $("#cardSet").css("color","#e5d559");
                         break;
                       case "Journey to Un'Goro":
                         $("#cardSet").text("운고로를 향한 여정");
@@ -140,6 +140,7 @@ $(function() {
                         var desc = data[i]['text'];
                         desc = desc.replace(/\\n/g,' ')
                                .replace('[x]','')
+                               .replace(/_/g,' ')
                                .replace(/\#/g,'')
                                .replace(/\$/g,'');
                         $("#desc").html(desc);
@@ -148,7 +149,8 @@ $(function() {
           }
             
           });
-        var cardInfoRef = firebase.database().ref('cardinfo/' + snapshot.val());
+  
+        var cardInfoRef = firebase.database().ref('IDtoImg/' + snapshot.val());
         cardInfoRef.once('value').then(function(snapshot){
            var storage = firebase.storage().ref('cards/' + snapshot.val() + '-gold.gif');
            storage.getDownloadURL().then(function(url){
@@ -166,8 +168,6 @@ $(function() {
               });
          });
       });
-      
-      
       NProgress.done();      
       });
     });
