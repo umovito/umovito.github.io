@@ -49,7 +49,7 @@ table {
 }
 
 .img-container {
-	height: 500px;
+	height: 400px;
 	width: 100%;
 	font: 0/0 a;
 	background-color: rgba(0,0,0,0.6);
@@ -68,12 +68,16 @@ table {
 }
 
 table {
-	margin-bottom: 0;
-	padding: 0;
+	width: 100%;
+	height: auto;
 	background-color: black;
 }
-.table {
-	border: gray;
+table tr {
+	height: 35px;
+	border: 1px solid gray;
+}
+table tr td {
+	color: gray;
 }
 video { 
     position: fixed;
@@ -88,6 +92,12 @@ video {
  	background-size: cover;
   	transition: 1s opacity;
 }
+#comment {
+	position: relative;
+	background-color: black;
+	width: 100%;
+	height: 300px;
+}
 </style>
 </head>
 <body>
@@ -98,7 +108,7 @@ video {
 <div class="img-container text-center">
 	<img id="img" class="img-responsive" alt="cardImage" src=""/>
 </div>
-<table id="info" class="table">
+<table id="info">
 	<tr>
 		<td id="name" class="text-center">카드 이름</td>
 	</tr>
@@ -115,5 +125,7 @@ video {
 		<td id="desc" class="text-center">카드 설명</td>
 	</tr>
 </table>
+<div id="comment">
+</div>
 </body>
 </html>

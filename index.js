@@ -7,14 +7,17 @@ $(function() {
       cardname = $("#cardname").val();
       $("#img").attr('src', '');
       $("#name").text('카드 이름 - 불러오는 중...');
+      $("#name").css("color","gray");
       $("#cardSet").text('카드 세트 - 불러오는 중...');
       $("#cardSet").css("background-color","#000");
-      $("#cardSet").css("color","#fff");
+      $("#cardSet").css("color","gray");
       $("#type").text('카드 종류 - 불러오는 중...');
+      $("#type").css("color","gray");
       $("#rarity").text('카드 등급 - 불러오는 중...');
       $("#rarity").css("background-color","#000");
-      $("#rarity").css("color","#fff");
+      $("#rarity").css("color","gray");
       $("#desc").text('카드 설명 - 불러오는 중...');
+      $("#desc").css("color","gray");
       NProgress.start();
       var rand = Math.floor(Math.random() * 1206);
       var cardIndexRef = firebase.database().ref('NumtoID/' + rand);
@@ -35,7 +38,8 @@ $(function() {
               data[i]['cardSet'] != null &&
               data[i]['type'] != null &&
               data[i]['rarity'] != null) {
-              $("#name").text(data[i]['name']);
+              $("#name").css("color","white");
+                $("#name").text(data[i]['name']);
                     switch(data[i]['cardSet']) {
                       case 'The League of Explorers':
                         $("#cardSet").text("탐험가 연맹");
@@ -146,6 +150,7 @@ $(function() {
                         video.play();
                         break;
                     }
+                    $("#type").css("color","white");
                     switch(data[i]['type']){
                       case 'Minion':
                         $("#type").text("하수인");
@@ -161,6 +166,7 @@ $(function() {
                         $("#type").text("무기");
                         break;
                     }
+                    $("#rarity").css("color","white");
                     switch(data[i]['rarity']) {
                         case 'Free':
                           $("#rarity").text("기본 카드")
@@ -171,23 +177,22 @@ $(function() {
                         case 'Rare':
                           $("#rarity").text("희귀 카드")
                           $("#rarity").css("background-color","#2161a5");
-                          $("#rarity").css("color","#fff");
                           break;
                         case 'Epic':
                           $("#rarity").text("영웅 카드")
                           $("#rarity").css("background-color","#5e2984");
-                          $("#rarity").css("color","#fff");
                           break;
                         case 'Legendary':
                           $("#rarity").text("전설 카드")
                           $("#rarity").css("background-color","#ffad32");
-                          $("#rarity").css("color","#fff");
                           break;
                     }
+                    
                     if (data[i]['text'] == null) {
                       $("#desc").html(' ');
                     }
                     else {
+                      $("#desc").css("color","white");
                         var desc = data[i]['text'];
                         desc = desc.replace(/\\n/g,' ')
                                .replace('[x]','')
