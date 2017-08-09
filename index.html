@@ -22,9 +22,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.rawgit.com/rstacruz/nprogress/master/nprogress.js"></script>
 <link rel="stylesheet" href="https://cdn.rawgit.com/rstacruz/nprogress/master/nprogress.css"/>
-<script src="index.min.js"></script>
-<meta charset="utf-8">
+<meta charset="utf-8"/>
 <style>
+body {
+	margin: 0;
+	color: white;
+	background-color: #000;
+}
 #button {
 	width: 100%;
 	height: 50px;
@@ -40,10 +44,15 @@
 	background-color: #222222;
 }
 
+table {
+	border: 
+}
+
 .img-container {
-	height: 400px;
+	height: 500px;
 	width: 100%;
 	font: 0/0 a;
+	background-color: rgba(0,0,0,0.6);
 }
 
 .img-container:before {
@@ -58,29 +67,52 @@
 	vertical-align: middle;
 }
 
+table {
+	margin-bottom: 0;
+	padding: 0;
+	background-color: black;
+}
+.table {
+	border: gray;
+}
+video { 
+    position: fixed;
+    top: 350px;
+    left: 50%;
+    min-width: 100%;
+    min-height: 400px;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+ 	background-size: cover;
+  	transition: 1s opacity;
+}
 </style>
 </head>
 <body>
-<div class="alert alert-warning" role="alert">카드 이름으로 검색 90% 개발완료</div>
+<video poster="" id="bgvid" playsinline="true" autoplay="true" muted="true" loop="true">
+	<source id="vdsrc" src="https://firebasestorage.googleapis.com/v0/b/githearth.appspot.com/o/Hearthstone%20Heroes%20of%20Warcraft%20Cinematic.mp4?alt=media&amp;token=909490b3-517d-4417-99ab-d3ab9caf0d63" type="video/mp4"/>
+</video>
 <button class="btn btn-default" id="button">카드를 한 장 드로우 합니다</button>
 <div class="img-container text-center">
 	<img id="img" class="img-responsive" alt="cardImage" src=""/>
 </div>
 <table id="info" class="table">
 	<tr>
-		<td id="name" class="text-center"></td>
+		<td id="name" class="text-center">카드 이름</td>
 	</tr>
 	<tr>
-		<td id="cardSet" class="text-center"></td>
+		<td id="cardSet" class="text-center">카드 세트</td>
 	</tr>
 	<tr>
-		<td id="type" class="text-center"></td>
+		<td id="type" class="text-center">카드 종류</td>
 	</tr>
 	<tr>
-		<td id="rarity" class="text-center"></td>
+		<td id="rarity" class="text-center">카드 등급</td>
 	</tr>
 	<tr>
-		<td id="desc" class="text-center"></td>
+		<td id="desc" class="text-center">카드 설명</td>
 	</tr>
 </table>
 </body>
