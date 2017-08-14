@@ -19,7 +19,7 @@ $(function() {
         $("#desc").text('카드 설명 - 불러오는 중...');
         $("#desc").css("color","gray");
         NProgress.start();
-        var rand = Math.floor(Math.random() * 1206);
+        var rand = Math.floor(Math.random() * 1341);
         var cardIndexRef = firebase.database().ref('NumtoID/' + rand);
         cardIndexRef.once('value').then(function(snapshot){
           var requrl = 'https://omgvamp-hearthstone-v1.p.mashape.com/cards/'+ snapshot.val();
