@@ -75,8 +75,8 @@
 				document.getElementById("bgm").play();
 				var timerId = setInterval(function(){
 					if(progress == 0) $("#time").show();
-					if(progress == 29000) $("#time").addClass("fadeout");
-					if(progress == 30000) $("#time").css("opacity", "0");
+					if(progress == 290000) $("#time").addClass("fadeout");
+					if(progress == 300000) $("#time").css("opacity", "0");
 					if(progress >= 0) {
 						width = progress/3000;
 						bar1.set(width, false);
