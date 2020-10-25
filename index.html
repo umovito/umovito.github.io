@@ -8,6 +8,15 @@
 	<link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="loading-bar.css"/>
 	<script type="text/javascript" src="loading-bar.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() { 
+			var filltype = ['index','line','matrix','maze','cloud','firefly','firework','gooey','rain','raindrop','ripple','stripe','wave'];
+			var fr = Math.floor(Math.random() * 12);
+			var br = Math.floor(Math.random() * 5);
+			$("#bar").attr("data-fill", "./" + filltype[fr] + ".svg");
+		});
+	</script>
 	<style>
 		body {
 			background-color:rgba(0,0,0,0);
