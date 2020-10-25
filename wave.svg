@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: rgb(241, 242, 243); display: block; position: relative; shape-rendering: auto;" width="72" height="72" preserveAspectRatio="xMidYMid" viewBox="0 0 72 72"><g transform="scale(0.28)"><path d="M -256 19.066666666666666 C -192 19.066666666666666 -192 2 -128 2 C -64 2 -64 19.066666666666666 2 19.066666666666666 C 64 19.066666666666666 64 2 128 2 C 192 2 192 19.066666666666666 256 19.066666666666666 L 384 384 L -384 384 L -384 19.066666666666666 Z" fill="#1d72ff" stroke="#1d72ff" stroke-width="1" transform="translate(110.986 -85.3333)">
+  <animateTransform attributeName="transform" type="translate" values="256 -85.33333333333333;0 -85.33333333333333;256 -85.33333333333333" keyTimes="0;0.5;1" dur="4.545454545454546s" repeatCount="indefinite" calcMode="spline" begin="0s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1"></animateTransform>
+</path><path d="M -256 19.066666666666666 C -192 19.066666666666666 -192 2 -128 2 C -64 2 -64 19.066666666666666 2 19.066666666666666 C 64 19.066666666666666 64 2 128 2 C 192 2 192 19.066666666666666 256 19.066666666666666 L 384 384 L -384 384 L -384 19.066666666666666 Z" fill="#18c2ff" stroke="#18c2ff" stroke-width="1" transform="translate(16.5207 0)">
+  <animateTransform attributeName="transform" type="translate" values="0 0;256 0;0 0" keyTimes="0;0.5;1" dur="4.545454545454546s" repeatCount="indefinite" calcMode="spline" begin="-0.7575757575757576s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1"></animateTransform>
+</path><path d="M -256 19.066666666666666 C -192 19.066666666666666 -192 2 -128 2 C -64 2 -64 19.066666666666666 2 19.066666666666666 C 64 19.066666666666666 64 2 128 2 C 192 2 192 19.066666666666666 256 19.066666666666666 L 384 384 L -384 384 L -384 19.066666666666666 Z" fill="#ddf7fa" stroke="#ddf7fa" stroke-width="1" transform="translate(249.135 85.3333)">
+  <animateTransform attributeName="transform" type="translate" values="256 85.33333333333333;0 85.33333333333333;256 85.33333333333333" keyTimes="0;0.5;1" dur="4.545454545454546s" repeatCount="indefinite" calcMode="spline" begin="-1.5151515151515151s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1"></animateTransform>
+</path><path d="M -256 19.066666666666666 C -192 19.066666666666666 -192 2 -128 2 C -64 2 -64 19.066666666666666 2 19.066666666666666 C 64 19.066666666666666 64 2 128 2 C 192 2 192 19.066666666666666 256 19.066666666666666 L 384 384 L -384 384 L -384 19.066666666666666 Z" fill="#1d72ff" stroke="#1d72ff" stroke-width="1" transform="translate(145.014 170.667)">
+  <animateTransform attributeName="transform" type="translate" values="0 170.66666666666666;256 170.66666666666666;0 170.66666666666666" keyTimes="0;0.5;1" dur="4.545454545454546s" repeatCount="indefinite" calcMode="spline" begin="0s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1"></animateTransform>
+</path></g><style type="text/css">.lded {
+  max-width: 100%
+}
+.lded .viewer {
+  width:  1140px;
+  max-width: 90%;
+  margin: 0 auto;
+  height: 322px;
+}
+.lded .panel, .lded .ctrl {
+  max-width: 1024px;
+  margin: auto
+}
+.lded .panel {
+  margin: -35px auto 0;
+}
+.gallery {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.gallery .item {
+  flex: 1 1 256px;
+  border-radius: 3px;
+  width: 256px;
+  height: 128px;
+  margin: 0 10px 20px;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0,0,0,.3);
+  background-size: 128px;
+}
+.gallery .item .move {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s ease-in-out, opacity 03.s ease-in-out;
+  width: 100%;
+  height: 100%;
+  background-size: 128px;
+}
+.gallery .item:hover .move {
+  visibility: visible;
+  opacity: 1;
+}
+.gallery.icon {
+  justify-content: center;
+}
+.gallery.icon .item {
+  flex:0 0 64px;
+  border-radius: 3px;
+  width: 64px;
+  height: 64px;
+  box-shadow: none;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin:0 5px 10px;
+  background: #fff;
+}
+.lded.pro .download .label { display: none }
+</style></svg>
