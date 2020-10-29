@@ -8,7 +8,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="loading-bar.css"/>
 	<script type="text/javascript" src="loading-bar.js"></script>
-	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 	<script type="text/javascript">
 
 		$(document).ready(function() { 
@@ -20,18 +20,14 @@
 	</script>
 	<style>
 		body {
-			margin: 0;
-			background-color: #000000;
+			margin: 0; background-color: #000000;
 		}
 
 		canvas {
-			display: block;
-			vertical-align: bottom;
+			display: block; vertical-align: bottom;
 		}
 		#particles-js {
-			position: absolute;
-			width: 100%;
-			height: 100%;
+			position:absolute; width: 100%; height: 100%;
 		}
 		.ldBar-label {
 			display:none;
@@ -83,117 +79,9 @@
 <div id="time" style="font-family: 'Fugaz One', cursive; visibility: hidden;"><div id="m">05</div><div id="s">00</div></div>
 <audio id="bgm"><source src="5m15s.mp3" type="audio/mp3"></audio>
 <script type="text/javascript">
-	particlesJS("particles-js", {
-	"particles": {
-		"number": {
-		"value": 355,
-		"density": {
-			"enable": true,
-			"value_area": 789.1476416322727
-		}
-		},
-		"color": {
-		"value": "#ffffff"
-		},
-		"shape": {
-		"type": "circle",
-		"stroke": {
-			"width": 0,
-			"color": "#000000"
-		},
-		"polygon": {
-			"nb_sides": 5
-		},
-		"image": {
-			"src": "img/github.svg",
-			"width": 100,
-			"height": 100
-		}
-		},
-		"opacity": {
-		"value": 0.48927153781200905,
-		"random": false,
-		"anim": {
-			"enable": true,
-			"speed": 0.2,
-			"opacity_min": 0,
-			"sync": false
-		}
-		},
-		"size": {
-		"value": 2,
-		"random": true,
-		"anim": {
-			"enable": true,
-			"speed": 2,
-			"size_min": 0,
-			"sync": false
-		}
-		},
-		"line_linked": {
-		"enable": false,
-		"distance": 150,
-		"color": "#ffffff",
-		"opacity": 0.4,
-		"width": 1
-		},
-		"move": {
-		"enable": true,
-		"speed": 0.2,
-		"direction": "none",
-		"random": true,
-		"straight": false,
-		"out_mode": "out",
-		"bounce": false,
-		"attract": {
-			"enable": false,
-			"rotateX": 600,
-			"rotateY": 1200
-		}
-		}
-	},
-	"interactivity": {
-		"detect_on": "canvas",
-		"events": {
-		"onhover": {
-			"enable": true,
-			"mode": "bubble"
-		},
-		"onclick": {
-			"enable": true,
-			"mode": "push"
-		},
-		"resize": true
-		},
-		"modes": {
-		"grab": {
-			"distance": 400,
-			"line_linked": {
-			"opacity": 1
-			}
-		},
-		"bubble": {
-			"distance": 83.91608391608392,
-			"size": 1,
-			"duration": 3,
-			"opacity": 1,
-			"speed": 3
-		},
-		"repulse": {
-			"distance": 200,
-			"duration": 0.4
-		},
-		"push": {
-			"particles_nb": 4
-		},
-		"remove": {
-			"particles_nb": 2
-		}
-		}
-	},
-	"retina_detect": true
-	});
 	var started = false;
+	var bar1 = new ldBar("#bar");
+	bar1.set(0, false);
 	function start(){
 		if(started == false) {
 			started = true;
@@ -201,14 +89,17 @@
 			var progress = -11000;
 			var m = 5;
 			var s = 0;
-			var bar1 = new ldBar("#bar");
-			bar1.set(width, false);
+			var end = Date.now() + 312 * 1000;
 			document.getElementById("bgm").play();
-			var timerId = setInterval(function(){
-				if(progress == 0) $("#time").css("visibility","visible");
-				if(progress == 290000) $("#time").addClass("fadeout");
-				if(progress == 300000) $("#time").css("opacity", "0");
-				if(progress >= 0) {
+
+			var x = window.setInterval(function() {
+				var left = Math.floor((end - Date.now()) / 1000);
+				if(left < 0) { clearInterval(x); return; }
+
+				if(left == 300) $("#time").css("visibility","visible");
+				if(left == 10) $("#time").addClass("fadeout");
+				if(left == 0) $("#time").css("opacity", "0");
+				if(left <= 300) {
 					width = progress/3000;
 					bar1.set(width, false);
 					if(progress%1000 == 0) {
@@ -231,8 +122,10 @@
 				}
 				progress += 10;
 			}, 10);
+			
 		}
 	}
+	particlesJS("particles-js", {"particles":{"number":{"value":259,"density":{"enable":false,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5445118727262681,"random":true,"anim":{"enable":true,"speed":1.2787212787212787,"opacity_min":0,"sync":false}},"size":{"value":2.5,"random":true,"anim":{"enable":true,"speed":14.385614385614385,"size_min":1.64,"sync":false}},"line_linked":{"enable":false,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":15.2,"direction":"top-right","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":78.91476416322726,"rotateY":300}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"repulse"},"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":false});
 </script>
 </body>
 </html>
