@@ -11,8 +11,8 @@
 	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() { 
-			var filltype = ['line','maze','firefly','firework','rain','raindrop','ripple'];
-			var fr = Math.floor(Math.random() * 7);
+			var filltype = ['line','maze','firefly','firework','rain','raindrop'];
+			var fr = Math.floor(Math.random() * 6);
 			var br = Math.floor(Math.random() * 5);
 			$("#bar").attr("data-fill", "./" + filltype[fr] + ".svg");
 		});
