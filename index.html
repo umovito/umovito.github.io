@@ -41,6 +41,102 @@
 			font-size:200px;
 			color: rgba(255, 255, 255, 0.7);
 		}
+		#ticker {
+			position:absolute;
+			width: 1000px;
+			height: 1000px;
+			margin: 40px 0 0 460px;
+			top: 0px;
+			left: 0px;
+			border-top: 1px solid rgba(255, 255, 255, 0.5);
+			border-left: 1px solid rgba(0, 0, 0, 0);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+			border-right: 1px solid rgba(0, 0, 0, 0);
+			border-radius: 50%;
+			opacity: 0;
+			filter: blur(10px) drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 5px white) drop-shadow(0px 0px 10px white) drop-shadow(0px 0px 20px white) drop-shadow(0px 0px 40px white) ;
+			background-color: rgba(0,0,0,0);
+		}
+		@keyframes rotating {
+			0% {
+				transform: rotate(0deg);
+			}
+			50% {
+				transform: rotate(180deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+		.rotatingease {
+			animation-name: rotating;
+			animation-duration: 2s;
+			animation-iteration-count: infinite;
+			animation-direction: normal;
+			animation-timing-function: ease;
+		}
+		.rotating {
+			animation-name: rotating;
+			animation-duration: 20s;
+			animation-iteration-count: infinite;
+			animation-direction: normal;
+			animation-timing-function: linear;
+		}
+		@keyframes scaleOut {
+			0% {
+				width: 1000px;
+				height: 1000px;
+				margin: 40px 0 0 460px;
+				border-radius: 500px;
+				opacity: 0;
+				filter: blur(5px) drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 5px white) drop-shadow(0px 0px 10px white) drop-shadow(0px 0px 20px white) drop-shadow(0px 0px 40px white);
+				transform: rotate(0deg);
+			}
+			20% {
+				width: 900px;
+				height: 900px;
+				margin: 90px 0 0 510px;
+				opacity: 0.5;
+				filter: blur(4px) drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 5px white) drop-shadow(0px 0px 10px white) drop-shadow(0px 0px 20px white) drop-shadow(0px 0px 40px white);
+				transform: rotate(4320deg);
+			}
+			40% {
+				width: 800px;
+				height: 800px;
+				margin: 140px 0 0 560px;
+				opacity: 0.75;
+				filter: blur(3px) drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 5px white) drop-shadow(0px 0px 10px white) drop-shadow(0px 0px 20px white) drop-shadow(0px 0px 40px white);
+				transform: rotate(7560deg);
+			}
+			60% {
+				width: 700px;
+				height: 700px;
+				margin: 190px 0 0 610px;
+				opacity: 0.867;
+				filter: blur(2px) drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 5px white) drop-shadow(0px 0px 10px white) drop-shadow(0px 0px 20px white) drop-shadow(0px 0px 40px white);
+				transform: rotate(9720deg);
+			}
+			80% {
+				width: 600px;
+				height: 600px;
+				margin: 240px 0 0 660px;
+				opacity: 0.9;
+				filter: blur(1px) drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 5px white) drop-shadow(0px 0px 10px white) drop-shadow(0px 0px 20px white) drop-shadow(0px 0px 40px white);
+				transform: rotate(10800deg);
+			}
+			100% {
+				width: 500px;
+				height: 500px;
+				margin: 290px 0 0 710px;
+				opacity: 1;
+				filter: blur(0px) drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 5px white) drop-shadow(0px 0px 10px white) drop-shadow(0px 0px 20px white) drop-shadow(0px 0px 40px white);
+				transform: rotate(11340deg);
+			}
+		}
+		.scaleOut.rotating {
+			animation: scaleOut 10s normal 1 forwards;
+			animation-timing-function: linear;
+		}
 		#s {
 			margin-top:-140px;
 		}
@@ -80,6 +176,21 @@
 			animation-timing-function: linear;
 			animation-direction: normal;
 		}
+		@keyframes bordercolor1 {
+			0% {
+				border-color: rgba(255, 255, 255, 0.7);
+			}
+			100% {
+				border-color: rgba(168, 201, 255, 0.7);
+			}
+		}
+		.bordercolor1 {
+			animation-name: bordercolor1;
+			animation-duration: 0.5s;
+			animation-iteration-count: 1;
+			animation-timing-function: linear;
+			animation-direction: normal;
+		}
 		@keyframes color2 {
 			0% {
 				color: rgba(168, 201, 255, 0.7);
@@ -90,6 +201,21 @@
 		}
 		.color2 {
 			animation-name: color2;
+			animation-duration: 0.5s;
+			animation-iteration-count: 1;
+			animation-timing-function: linear;
+			animation-direction: normal;
+		}
+		@keyframes bordercolor2 {
+			0% {
+				border-color: rgba(168, 201, 255, 0.7);
+			}
+			100% {
+				border-color: rgba(130, 115, 212, 0.7);
+			}
+		}
+		.bordercolor2 {
+			animation-name: bordercolor2;
 			animation-duration: 0.5s;
 			animation-iteration-count: 1;
 			animation-timing-function: linear;
@@ -110,6 +236,21 @@
 			animation-timing-function: linear;
 			animation-direction: normal;
 		}
+		@keyframes bordercolor3 {
+			0% {
+				border-color: rgba(130, 115, 212, 0.7);
+			}
+			100% {
+				border-color: rgba(217, 97, 221, 0.7);
+			}
+		}
+		.bordercolor3 {
+			animation-name: bordercolor3;
+			animation-duration: 0.5s;
+			animation-iteration-count: 1;
+			animation-timing-function: linear;
+			animation-direction: normal;
+		}
 		@keyframes color4 {
 			0% {
 				color: rgba(217, 97, 221, 0.7);
@@ -125,10 +266,26 @@
 			animation-timing-function: linear;
 			animation-direction: normal;
 		}
+		@keyframes bordercolor4 {
+			0% {
+				border-color:  rgba(217, 97, 221, 0.7);
+			}
+			100% {
+				border-color: rgba(172, 62, 108, 0.7);
+			}
+		}
+		.bordercolor4 {
+			animation-name: bordercolor4;
+			animation-duration: 0.5s;
+			animation-iteration-count: 1;
+			animation-timing-function: linear;
+			animation-direction: normal;
+		}
 	</style>
 </head>
 <body onclick="start()">
 	<div id="particles-js"></div>
+	<div id="ticker" class="rotating"></div>
 	<div id="bar" class="ldBar"
   style="width:1920px;height:1080px;top:0;left:0;",
   data-value="0",
@@ -143,15 +300,20 @@
 <audio id="bgm"><source src="5m15s.mp3" type="audio/mp3"></audio>
 <svg xmlns="http://www.w3.org/2000/svg">
 	<linearGradient id='grad1' x1='0' x2='1' y1='0.85' y2='0.15'>
+		<!--
 		<stop offset='15%' style='stop-color:rgb(36, 36, 36); stop-opacity:0.7;'></stop>
 		<stop offset='33%' style='stop-color:rgb(33, 24, 66); stop-opacity:0.7;'></stop>
 		<stop offset='67%' style='stop-color:rgb(32, 51, 45); stop-opacity:0.7;'></stop>
 		<stop offset='85%' style='stop-color:rgb(36, 36, 36); stop-opacity:0.7;'></stop>
+		-->
+		<stop offset='15%' style='stop-color:rgb(36, 36, 36);'></stop>
+		<stop offset='33%' style='stop-color:rgb(33, 24, 66);'></stop>
+		<stop offset='67%' style='stop-color:rgb(32, 51, 45);'></stop>
+		<stop offset='85%' style='stop-color:rgb(36, 36, 36);'></stop>
 	</linearGradient>
 </svg>
 <script type="text/javascript">
 	var started = false;
-	
 	function start(){
 		if(started == false) {
 			started = true;
@@ -163,12 +325,22 @@
 			var s = 0;
 			var end = Date.now() + 312 * 1000;
 			document.getElementById("bgm").play();
-
 			var x = window.setInterval(function() {
 				var left = Math.floor((end - Date.now()) / 1000);
 				if(left < 0) { clearInterval(x); return; }
 
-				if(left == 300) $("#time").css("visibility","visible");
+				if(left == 300) {
+					$("#ticker").addClass("scaleOut");
+					$("#time").css("visibility","visible");
+				}
+				if(left == 290) {
+					$("#ticker").prop("class","rotatingease");
+					$("#ticker").css("width", "500px");
+					$("#ticker").css("height", "500px");
+					$("#ticker").css("margin", "290px 0 0 710px");
+					$("#ticker").css("opacity", "1");
+					$("#ticker").css("filter", "blur(0px) drop-shadow(0px 0px 2px white) drop-shadow(0px 0px 5px white) drop-shadow(0px 0px 10px white) drop-shadow(0px 0px 20px white) drop-shadow(0px 0px 40px white)");
+				}
 				if(left == 10) $("#time").addClass("fadeout");
 				if(left == 0) $("#time").css("opacity", "0");
 				if(left <= 300) {
@@ -181,21 +353,33 @@
 								if(m==3) {
 									$("#time").addClass("color1");
 									$("#time").css("color", "rgba(168, 201, 255, 0.7)");
+									$("#ticker").addClass("bordercolor1");
+									$("#ticker").css("border-color", "rgba(168, 201, 255, 0.7)");
+									$("#ticker").css("filter", "drop-shadow(0px 0px 2px rgba(168, 201, 255, 0.7)) drop-shadow(0px 0px 5px rgba(168, 201, 255, 0.7)) drop-shadow(0px 0px 10px rgba(168, 201, 255, 0.7)) drop-shadow(0px 0px 20px rgba(168, 201, 255, 0.7)) drop-shadow(0px 0px 40px rgba(168, 201, 255, 0.7))");
 								}
 								if(m==2) {
 									$("#time").removeClass("color1");
 									$("#time").addClass("color2");
 									$("#time").css("color", "rgba(130, 115, 212, 0.7)");
+									$("#ticker").addClass("bordercolor2");
+									$("#ticker").css("border-color", "rgba(130, 115, 212, 0.7)");
+									$("#ticker").css("filter", "drop-shadow(0px 0px 2px rgba(130, 115, 212, 0.7)) drop-shadow(0px 0px 5px rgba(130, 115, 212, 0.7)) drop-shadow(0px 0px 10px rgba(130, 115, 212, 0.7)) drop-shadow(0px 0px 20px rgba(130, 115, 212, 0.7)) drop-shadow(0px 0px 40px rgba(130, 115, 212, 0.7))");
 								}
 								if(m==1) {
 									$("#time").removeClass("color2");
 									$("#time").addClass("color3");
 									$("#time").css("color", "rgba(217, 97, 221, 0.7)");
+									$("#ticker").addClass("bordercolor3");
+									$("#ticker").css("border-color", "rgba(217, 97, 221, 0.7)");
+									$("#ticker").css("filter", "drop-shadow(0px 0px 2px rgba(217, 97, 221, 0.7)) drop-shadow(0px 0px 5px rgba(217, 97, 221, 0.7)) drop-shadow(0px 0px 10px rgba(217, 97, 221, 0.7)) drop-shadow(0px 0px 20px rgba(217, 97, 221, 0.7)) drop-shadow(0px 0px 40px rgba(217, 97, 221, 0.7))");
 								}
 								if(m==0) {
 									$("#time").removeClass("color3");
 									$("#time").addClass("color4");
 									$("#time").css("color", "rgba(172, 62, 108, 0.7)");
+									$("#ticker").addClass("bordercolor4");
+									$("#ticker").css("border-color", "rgba(172, 62, 108, 0.7)");
+									$("#ticker").css("filter", "drop-shadow(0px 0px 2px rgba(172, 62, 108, 0.7)) drop-shadow(0px 0px 5px rgba(172, 62, 108, 0.7)) drop-shadow(0px 0px 10px rgba(172, 62, 108, 0.7)) drop-shadow(0px 0px 20px rgba(172, 62, 108, 0.7)) drop-shadow(0px 0px 40px rgba(172, 62, 108, 0.7))");
 								}
 							}
 							else {
