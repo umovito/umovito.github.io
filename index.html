@@ -325,11 +325,10 @@
 <div id="tooltip"></div>
 <script type="text/javascript">
 	var started = false;
+	var bar1;
 	var progress = -11000;
 	let count = 0;
 	let rAF_ID;
-	var bar1 = new ldBar("#bar");
-	bar1.set(0, false);
 	var width = 0.0;
 	var progress = 312000;
 	var starting = 11000;
@@ -463,6 +462,8 @@
 	function start(){
 		if(started == false) {
 			started = true;
+			bar1 = new ldBar("#bar");
+			bar1.set(0, false);
 			var worker = new Worker('worker.js');
 			// request animation frame on render
 			end = Date.now() + progress;
