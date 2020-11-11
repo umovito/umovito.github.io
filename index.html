@@ -15,8 +15,8 @@
 			var filltypech = ['ch_firework', 'ch_rain'];
 			var fr = Math.floor(Math.random() * 6);
 			var frch = Math.floor(Math.random() * 2);
-			var bmtype = ['1', '2', '3'];
-			var br = Math.floor(Math.random() * 3);
+			var bmtype = ['1', '2', '3', '4'];
+			var br = Math.floor(Math.random() * 4);
 			$("#bgmsrc").prop("src", "./" + bmtype[br] + ".mp3");
 			if(bmtype[br] == '3') $("#bar").attr("data-fill", "./" + filltypech[frch] + ".svg");
 			else $("#bar").attr("data-fill", "./" + filltype[fr] + ".svg");
@@ -373,6 +373,74 @@
 		#tickline {
 			z-index:-1;
 		}
+		@keyframes color32 {
+			0% {
+				color: rgba(156, 156, 156);
+			}
+			100% {
+				color: rgb(255, 129, 79);
+			}
+		}
+		.color32 {
+			animation-name: color32;
+			animation-duration: 1s;
+			animation-iteration-count: 1;
+			animation-timing-function: linear;
+			animation-direction: normal;
+		}
+		@keyframes bordercolor32 {
+			0% {
+				border-left-color: rgba(255, 255, 255, 0.7);
+				border-right-color: rgba(255, 255, 255, 0.7);
+				transform: rotate(0deg);
+			}
+			100% {
+				border-left-color: rgba(255, 129, 79, 0.7);
+				border-right-color: rgba(255, 129, 79, 0.7);
+				transform: rotate(2160deg);
+			}
+		}
+		.bordercolor32 {
+			animation-name: bordercolor32;
+			animation-duration: 1s;
+			animation-iteration-count: 1;
+			animation-timing-function: cubic-bezier(0, 1, 0, 1);
+			animation-direction: normal;
+		}
+		@keyframes color33 {
+			0% {
+				color: rgb(255, 129, 79);
+			}
+			100% {
+				color: rgb(216, 0, 0);
+			}
+		}
+		.color33 {
+			animation-name: color33;
+			animation-duration: 1s;
+			animation-iteration-count: 1;
+			animation-timing-function: linear;
+			animation-direction: normal;
+		}
+		@keyframes bordercolor33 {
+			0% {
+				border-left-color: rgba(255, 129, 79, 0.7);
+				border-right-color: rgba(255, 129, 79, 0.7);
+				transform: rotate(0deg);
+			}
+			100% {
+				border-left-color: rgba(216, 0, 0, 0.7);
+				border-right-color: rgba(216, 0, 0, 0.7);
+				transform: rotate(2160deg);
+			}
+		}
+		.bordercolor33 {
+			animation-name: bordercolor33;
+			animation-duration: 1s;
+			animation-iteration-count: 1;
+			animation-timing-function: cubic-bezier(0, 1, 0, 1);
+			animation-direction: normal;
+		}
 	</style>
 </head>
 <body onclick="start()">
@@ -424,149 +492,253 @@
 	var initDate = Date.now();
 	var initcount;
 	var toggles = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	var rAFCallback;
 	$("#tooltip").prop("class", "fadeoutfast");
 
-	var rAFCallback = function(callback) {
-		if(initialzied == false) {
-			initialzied = true;
-			initcount = callback;
-		}
-		let count = callback - initcount;
-
-		let pass = Math.floor((count-starting) / 1000);
-		if(pass == 0) {
-			if(toggles[0] == 0) {
-				toggles[0] = 1;
-				$("#ticker").addClass("scaleOut");
-				$("#time").css("visibility","visible");
-			}
-		}
-		if(pass == 10) {
-			if(toggles[1] == 0) {
-				toggles[1] = 1;
-				$("#ticker").prop("class","rotatingease");
-				$("#ticker").css("width", "500px");
-				$("#ticker").css("height", "500px");
-				$("#ticker").css("margin", "290px 0 0 710px");
-				$("#ticker").css("opacity", "1");
-			}
-		}
-		if(pass == 60) {
-			if(toggles[2] == 0) {
-				toggles[2] = 1;
-				$("#time").prop("class", "color1");
-				$("#ticker").prop("class", "bordercolor1");
-				$("#time").css("color", "rgba(255, 247, 201)");
-				$("#ticker").css("border-left-color", "rgba(255, 247, 201, 0.7)");
-				$("#ticker").css("border-right-color", "rgba(255, 247, 201, 0.7)");
-				$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-				$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-			}
-		}
-		if(pass == 61) {
-			if(toggles[3] == 0) {
-				toggles[3] = 1;
-				$("#ticker").prop("class", "rotatingease");
-			}
-		}
-		if(pass == 120) {
-			if(toggles[4] == 0) {
-				toggles[4] = 1;
-				$("#time").prop("class", "color2");
-				$("#ticker").prop("class", "bordercolor2");
-				$("#time").css("color", "rgba(241, 180, 139)");
-				$("#ticker").css("border-left-color", "rgba(241, 180, 139, 0.7)");
-				$("#ticker").css("border-right-color", "rgba(241, 180, 139, 0.7)");
-				$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-				$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-			}
-		}
-		if(pass == 121) {
-			if(toggles[5] == 0) {
-				toggles[5] = 1;
-				$("#ticker").prop("class", "rotatingease");
-			}
-		}
-		if(pass == 180) {
-			if(toggles[6] == 0) {
-				toggles[6] = 1;
-				$("#wall").prop("class", "bgopacity");
-				$("#time").prop("class", "color3");
-				$("#ticker").prop("class", "bordercolor3");
-				$("#time").css("color", "rgba(223, 113, 86)");
-				$("#ticker").css("border-left-color", "rgba(223, 113, 86, 0.7)");
-				$("#ticker").css("border-right-color", "rgba(223, 113, 86, 0.7)");
-				$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-				$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-			}
-		}
-		if(pass == 181) {
-			if(toggles[7] == 0) {
-				toggles[7] = 1;
-				$("#ticker").prop("class", "rotatingease"); 
-			}
-		}
-		if(pass == 240) {
-			if(toggles[8] == 0) {
-				toggles[8] = 1;
-				$("#wall").prop("class", "bgmove");
-				$("#wall").css("opacity", "1");
-				$("#particles-js").prop("class", "fadein");
-				$("#time").prop("class", "color4");
-				$("#ticker").prop("class", "bordercolor4");
-				$("#time").css("color", "rgba(240, 58, 58)");
-				$("#ticker").css("border-left-color", "rgba(240, 58, 58, 0.7)");
-				$("#ticker").css("border-right-color", "rgba(240, 58, 58, 0.7)");
-				$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-				$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-			}
-		}
-		if(pass == 241) {
-			if(toggles[9] == 0) {
-				toggles[9] = 1;
-				$("#ticker").prop("class", "rotatingease");
-			}
-		}
-		if(pass == 290) {
-			if(toggles[10] == 0) {
-				toggles[10] = 1;
-				$("#time").prop("class", "fadeout");
-				$("#ticker").prop("class", "fadeoutticker");
-			}
-		}
-		if(pass == 300) {
-			if(toggles[11] == 0) {
-				toggles[11] = 1;
-				$("#time").css("opacity", "0");
-			}
-		}
-		if(pass >= 0) {
-			if(count>=starting) width = (count-starting)/3000;
-			bar1.set(width, false);
-			if(count-starting>=0) {
-				let time = progress - count;
-				let s = Math.floor((time /  1000)) % 60;
-  				let m = Math.floor((time / 60000)) % 60;
-				$("#m").html("0"+m.toString());
-				if(s>9) $("#s").html(s.toString()); else $("#s").html("0"+s.toString());
-			}
-		}
-		
-		rAF_ID = requestAnimationFrame( rAFCallback );
-	}
-
 	function start(){
+		initt();
 		if(started == false) {
 			started = true;
 			bar1 = new ldBar("#bar");
 			bar1.set(0, false);
 			var worker = new Worker('worker.js');
 			// request animation frame on render
+			if($("#bgmsrc").prop("src").indexOf("4.mp3") >= 0) progress = 184000;
 			end = Date.now() + progress;
 			document.getElementById("bgm").play();
 			rAF_ID = requestAnimationFrame( rAFCallback );
-			
 		}
+	}
+
+	function initt() {
+		if($("#bgmsrc").prop("src").indexOf("4.mp3") >= 0) {
+		progress = 184000;
+		starting = 4000;
+		lm = 3;
+		ls = 0;
+		rAFCallback = function(callback) {
+			if(initialzied == false) {
+				initialzied = true;
+				initcount = callback;
+			}
+			let count = callback - initcount;
+
+			let pass = Math.floor((count-starting) / 1000);
+			if(pass == 0) {
+				if(toggles[0] == 0) {
+					toggles[0] = 1;
+					$("#ticker").addClass("scaleOut");
+					$("#time").css("visibility","visible");
+				}
+			}
+			if(pass == 10) {
+				if(toggles[1] == 0) {
+					toggles[1] = 1;
+					$("#ticker").prop("class","rotatingease");
+					$("#ticker").css("width", "500px");
+					$("#ticker").css("height", "500px");
+					$("#ticker").css("margin", "290px 0 0 710px");
+					$("#ticker").css("opacity", "1");
+				}
+			}
+			if(pass == 60) {
+				if(toggles[2] == 0) {
+					toggles[2] = 1;
+					$("#wall").prop("class", "bgopacity");
+					$("#time").prop("class", "color32");
+					$("#ticker").prop("class", "bordercolor32");
+					$("#time").css("color", "rgba(255, 129, 79)");
+					$("#ticker").css("border-left-color", "rgba(255, 129, 79, 0.7)");
+					$("#ticker").css("border-right-color", "rgba(255, 129, 79, 0.7)");
+					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
+					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
+				}
+			}
+			if(pass == 61) {
+				if(toggles[3] == 0) {
+					toggles[3] = 1;
+					$("#ticker").prop("class", "rotatingease");
+				}
+			}
+			if(pass == 120) {
+				if(toggles[4] == 0) {
+					toggles[4] = 1;
+					$("#wall").prop("class", "bgmove");
+					$("#wall").css("opacity", "1");
+					$("#particles-js").prop("class", "fadein");
+					$("#time").prop("class", "color33");
+					$("#ticker").prop("class", "bordercolor33");
+					$("#time").css("color", "rgba(216, 0, 0)");
+					$("#ticker").css("border-left-color", "rgba(216, 0, 0, 0.7)");
+					$("#ticker").css("border-right-color", "rgba(216, 0, 0, 0.7)");
+					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
+					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
+				}
+			}
+			if(pass == 121) {
+				if(toggles[5] == 0) {
+					toggles[5] = 1;
+					$("#ticker").prop("class", "rotatingease");
+				}
+			}
+			if(pass == 170) {
+				if(toggles[10] == 0) {
+					toggles[10] = 1;
+					$("#time").prop("class", "fadeout");
+					$("#ticker").prop("class", "fadeoutticker");
+				}
+			}
+			if(pass == 180) {
+				if(toggles[6] == 0) {
+					toggles[6] = 1;
+					$("#time").css("opacity", "0");
+				}
+			}
+			if(pass >= 0) {
+				if(count>=starting) width = (count-starting)/1800;
+				bar1.set(width, false);
+				if(count-starting>=0) {
+					let time = progress - count;
+					let s = Math.floor((time /  1000)) % 60;
+					let m = Math.floor((time / 60000)) % 60;
+					$("#m").html("0"+m.toString());
+					if(s>9) $("#s").html(s.toString()); else $("#s").html("0"+s.toString());
+				}
+			}
+			
+			rAF_ID = requestAnimationFrame( rAFCallback );
+		}
+	}
+	else {
+		rAFCallback = function(callback) {
+			if(initialzied == false) {
+				initialzied = true;
+				initcount = callback;
+			}
+			let count = callback - initcount;
+
+			let pass = Math.floor((count-starting) / 1000);
+			if(pass == 0) {
+				if(toggles[0] == 0) {
+					toggles[0] = 1;
+					$("#ticker").addClass("scaleOut");
+					$("#time").css("visibility","visible");
+				}
+			}
+			if(pass == 10) {
+				if(toggles[1] == 0) {
+					toggles[1] = 1;
+					$("#ticker").prop("class","rotatingease");
+					$("#ticker").css("width", "500px");
+					$("#ticker").css("height", "500px");
+					$("#ticker").css("margin", "290px 0 0 710px");
+					$("#ticker").css("opacity", "1");
+				}
+			}
+			if(pass == 60) {
+				if(toggles[2] == 0) {
+					toggles[2] = 1;
+					$("#time").prop("class", "color1");
+					$("#ticker").prop("class", "bordercolor1");
+					$("#time").css("color", "rgba(255, 247, 201)");
+					$("#ticker").css("border-left-color", "rgba(255, 247, 201, 0.7)");
+					$("#ticker").css("border-right-color", "rgba(255, 247, 201, 0.7)");
+					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
+					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
+				}
+			}
+			if(pass == 61) {
+				if(toggles[3] == 0) {
+					toggles[3] = 1;
+					$("#ticker").prop("class", "rotatingease");
+				}
+			}
+			if(pass == 120) {
+				if(toggles[4] == 0) {
+					toggles[4] = 1;
+					$("#time").prop("class", "color2");
+					$("#ticker").prop("class", "bordercolor2");
+					$("#time").css("color", "rgba(241, 180, 139)");
+					$("#ticker").css("border-left-color", "rgba(241, 180, 139, 0.7)");
+					$("#ticker").css("border-right-color", "rgba(241, 180, 139, 0.7)");
+					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
+					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
+				}
+			}
+			if(pass == 121) {
+				if(toggles[5] == 0) {
+					toggles[5] = 1;
+					$("#ticker").prop("class", "rotatingease");
+				}
+			}
+			if(pass == 180) {
+				if(toggles[6] == 0) {
+					toggles[6] = 1;
+					$("#wall").prop("class", "bgopacity");
+					$("#time").prop("class", "color3");
+					$("#ticker").prop("class", "bordercolor3");
+					$("#time").css("color", "rgba(223, 113, 86)");
+					$("#ticker").css("border-left-color", "rgba(223, 113, 86, 0.7)");
+					$("#ticker").css("border-right-color", "rgba(223, 113, 86, 0.7)");
+					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
+					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
+				}
+			}
+			if(pass == 181) {
+				if(toggles[7] == 0) {
+					toggles[7] = 1;
+					$("#ticker").prop("class", "rotatingease"); 
+				}
+			}
+			if(pass == 240) {
+				if(toggles[8] == 0) {
+					toggles[8] = 1;
+					$("#wall").prop("class", "bgmove");
+					$("#wall").css("opacity", "1");
+					$("#particles-js").prop("class", "fadein");
+					$("#time").prop("class", "color4");
+					$("#ticker").prop("class", "bordercolor4");
+					$("#time").css("color", "rgba(240, 58, 58)");
+					$("#ticker").css("border-left-color", "rgba(240, 58, 58, 0.7)");
+					$("#ticker").css("border-right-color", "rgba(240, 58, 58, 0.7)");
+					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
+					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
+				}
+			}
+			if(pass == 241) {
+				if(toggles[9] == 0) {
+					toggles[9] = 1;
+					$("#ticker").prop("class", "rotatingease");
+				}
+			}
+			if(pass == 290) {
+				if(toggles[10] == 0) {
+					toggles[10] = 1;
+					$("#time").prop("class", "fadeout");
+					$("#ticker").prop("class", "fadeoutticker");
+				}
+			}
+			if(pass == 300) {
+				if(toggles[11] == 0) {
+					toggles[11] = 1;
+					$("#time").css("opacity", "0");
+				}
+			}
+			if(pass >= 0) {
+				if(count>=starting) width = (count-starting)/3000;
+				bar1.set(width, false);
+				if(count-starting>=0) {
+					let time = progress - count;
+					let s = Math.floor((time /  1000)) % 60;
+					let m = Math.floor((time / 60000)) % 60;
+					$("#m").html("0"+m.toString());
+					if(s>9) $("#s").html(s.toString()); else $("#s").html("0"+s.toString());
+				}
+			}
+			
+			rAF_ID = requestAnimationFrame( rAFCallback );
+		}
+	}
 	}
 </script>
 </body>
