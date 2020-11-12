@@ -503,7 +503,7 @@
 			bar1.set(0, false);
 			var worker = new Worker('worker.js');
 			// request animation frame on render
-			if($("#bgmsrc").prop("src").indexOf("4.mp3") >= 0) progress = 184000;
+			if($("#bgmsrc").prop("src").indexOf("4.mp3") >= 0) progress = 192000;
 			end = Date.now() + progress;
 			document.getElementById("bgm").play();
 			rAF_ID = requestAnimationFrame( rAFCallback );
@@ -512,8 +512,8 @@
 
 	function initt() {
 		if($("#bgmsrc").prop("src").indexOf("4.mp3") >= 0) {
-		progress = 184000;
-		starting = 4000;
+		progress = 192000;
+		starting = 11000;
 		lm = 3;
 		ls = 0;
 		rAFCallback = function(callback) {
