@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions name="ShopNAPI"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://seller.shopn.platform.nhncorp.com/"
+	targetNamespace="http://seller.shopn.platform.nhncorp.com/"
+>
+
+	<wsdl:types>
+		<xs:schema targetNamespace="http://seller.shopn.platform.nhncorp.com/" elementFormDefault="qualified">
+			<xs:include schemaLocation="GetProductOrderInfoListMessage.xsd" />
+			<xs:include schemaLocation="ApproveCancelApplicationMessage.xsd" />
+			<xs:include schemaLocation="ApproveReturnApplicationMessage.xsd" />
+			<xs:include schemaLocation="CancelSaleMessage.xsd" />
+			<xs:include schemaLocation="DelayProductOrderMessage.xsd" />
+			<xs:include schemaLocation="GetChangedProductOrderListMessage.xsd" />
+			<xs:include schemaLocation="PlaceProductOrderMessage.xsd" />
+			<xs:include schemaLocation="ReDeliveryExchangeMessage.xsd" />
+			<xs:include schemaLocation="RejectExchangeMessage.xsd" />
+			<xs:include schemaLocation="ReleaseExchangeHoldMessage.xsd" />
+			<xs:include schemaLocation="ReleaseReturnHoldMessage.xsd" />
+			<xs:include schemaLocation="ShipProductOrderMessage.xsd" />
+			<xs:include schemaLocation="WithholdExchangeMessage.xsd" />
+			<xs:include schemaLocation="WithholdReturnMessage.xsd" />
+			<xs:include schemaLocation="ApproveCollectedExchangeMessage.xsd" />
+		</xs:schema>
+	</wsdl:types>
+
+	<!-- SellerService41 Messages-->
+	<wsdl:message name="SellerService41.GetProductOrderInfoListResponse">
+		<wsdl:part name="GetProductOrderInfoListResponse" element="tns:GetProductOrderInfoListResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.ApproveCancelApplicationResponse">
+		<wsdl:part name="ApproveCancelApplicationResponse" element="tns:ApproveCancelApplicationResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.ApproveReturnApplicationResponse">
+		<wsdl:part name="ApproveReturnApplicationResponse" element="tns:ApproveReturnApplicationResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.CancelSaleResponse">
+		<wsdl:part name="CancelSaleResponse" element="tns:CancelSaleResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.DelayProductOrderResponse">
+		<wsdl:part name="DelayProductOrderResponse" element="tns:DelayProductOrderResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.GetChangedProductOrderListResponse">
+		<wsdl:part name="GetChangedProductOrderListResponse" element="tns:GetChangedProductOrderListResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.PlaceProductOrderResponse">
+		<wsdl:part name="PlaceProductOrderResponse" element="tns:PlaceProductOrderResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.ReDeliveryExchangeResponse">
+		<wsdl:part name="ReDeliveryExchangeResponse" element="tns:ReDeliveryExchangeResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.RejectExchangeResponse">
+		<wsdl:part name="RejectExchangeResponse" element="tns:RejectExchangeResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.ReleaseExchangeHoldResponse">
+		<wsdl:part name="ReleaseExchangeHoldResponse" element="tns:ReleaseExchangeHoldResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.ReleaseReturnHoldResponse">
+		<wsdl:part name="ReleaseReturnHoldResponse" element="tns:ReleaseReturnHoldResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.ShipProductOrderResponse">
+		<wsdl:part name="ShipProductOrderResponse" element="tns:ShipProductOrderResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.WithholdExchangeResponse">
+		<wsdl:part name="WithholdExchangeResponse" element="tns:WithholdExchangeResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.WithholdReturnResponse">
+		<wsdl:part name="WithholdReturnResponse" element="tns:WithholdReturnResponse" />
+	</wsdl:message>
+	<wsdl:message name="SellerService41.ApproveCollectedExchangeResponse">
+		<wsdl:part name="ApproveCollectedExchangeResponse" element="tns:ApproveCollectedExchangeResponse" />
+	</wsdl:message>
+
+	<!-- SellerService41 PortType -->
+	<wsdl:portType name="SellerServicePortType">
+		<wsdl:operation name="GetProductOrderInfoList">
+			<wsdl:input message="tns:SellerService41.GetProductOrderInfoListRequest" />
+			<wsdl:output message="tns:SellerService41.GetProductOrderInfoListResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="ApproveCancelApplication">
+			<wsdl:input message="tns:SellerService41.ApproveCancelApplicationRequest" />
+			<wsdl:output message="tns:SellerService41.ApproveCancelApplicationResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="ApproveReturnApplication">
+			<wsdl:input message="tns:SellerService41.ApproveReturnApplicationRequest" />
+			<wsdl:output message="tns:SellerService41.ApproveReturnApplicationResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="CancelSale">
+			<wsdl:input message="tns:SellerService41.CancelSaleRequest" />
+			<wsdl:output message="tns:CancelSaleSellerService41.Response" />
+		</wsdl:operation>
+		<wsdl:operation name="DelayProductOrder">
+			<wsdl:input message="tns:SellerService41.DelayProductOrderRequest" />
+			<wsdl:output message="tns:SellerService41.DelayProductOrderResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedProductOrderList">
+			<wsdl:input message="tns:SellerService41.GetChangedProductOrderListRequest" />
+			<wsdl:output message="tns:SellerService41.GetChangedProductOrderListResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="PlaceProductOrder">
+			<wsdl:input message="tns:SellerService41.PlaceProductOrderRequest" />
+			<wsdl:output message="tns:SellerService41.PlaceProductOrderResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="ReDeliveryExchange">
+			<wsdl:input message="tns:SellerService41.ReDeliveryExchangeRequest" />
+			<wsdl:output message="tns:SellerService41.ReDeliveryExchangeResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="RejectExchange">
+			<wsdl:input message="tns:SellerService41.RejectExchangeRequest" />
+			<wsdl:output message="tns:SellerService41.RejectExchangeResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="ReleaseExchangeHold">
+			<wsdl:input message="tns:SellerService41.ReleaseExchangeHoldRequest" />
+			<wsdl:output message="tns:SellerService41.ReleaseExchangeHoldResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="ReleaseReturnHold">
+			<wsdl:input message="tns:SellerService41.ReleaseReturnHoldRequest" />
+			<wsdl:output message="tns:SellerService41.ReleaseReturnHoldResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="ShipProductOrder">
+			<wsdl:input message="tns:SellerService41.ShipProductOrderRequest" />
+			<wsdl:output message="tns:SellerService41.ShipProductOrderResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="WithholdExchange">
+			<wsdl:input message="tns:SellerService41.WithholdExchangeRequest" />
+			<wsdl:output message="tns:SellerService41.WithholdExchangeResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="WithholdReturn">
+			<wsdl:input message="tns:SellerService41.WithholdReturnRequest" />
+			<wsdl:output message="tns:SellerService41.WithholdReturnResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="ApproveCollectedExchange">
+			<wsdl:input message="tns:SellerService41.ApproveCollectedExchangeRequest" />
+			<wsdl:output message="tns:SellerService41.ApproveCollectedExchangeResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<!-- SellerService41 SOAP 1.1 Binding -->
+	<wsdl:binding name="SellerService41SOAP11Binding" type="tns:SellerServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetProductOrderInfoList">
+			<soap:operation soapAction="SellerService41#GetProductOrderInfoList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ApproveCancelApplication">
+			<soap:operation soapAction="SellerService41#ApproveCancelApplication" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ApproveReturnApplication">
+			<soap:operation soapAction="SellerService41#ApproveReturnApplication" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CancelSale">
+			<soap:operation soapAction="SellerService41#CancelSale" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="DelayProductOrder">
+			<soap:operation soapAction="SellerService41#DelayProductOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedProductOrderList">
+			<soap:operation soapAction="SellerService41#GetChangedProductOrderList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="PlaceProductOrder">
+			<soap:operation soapAction="SellerService41#PlaceProductOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReDeliveryExchange">
+			<soap:operation soapAction="SellerService41#ReDeliveryExchange" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RejectExchange">
+			<soap:operation soapAction="SellerService41#RejectExchange" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReleaseExchangeHold">
+			<soap:operation soapAction="SellerService41#ReleaseExchangeHold" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReleaseReturnHold">
+			<soap:operation soapAction="SellerService41#ReleaseReturnHold" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ShipProductOrder">
+			<soap:operation soapAction="SellerService41#ShipProductOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="WithholdExchange">
+			<soap:operation soapAction="SellerService41#WithholdExchange" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="WithholdReturn">
+			<soap:operation soapAction="SellerService41#WithholdReturn" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ApproveCollectedExchange">
+			<soap:operation soapAction="SellerService41#ApproveCollectedExchange" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- SellerService41 SOAP 1.2 Binding -->
+	<wsdl:binding name="SellerService41SOAP12Binding" type="tns:SellerServicePortType">
+		<soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetProductOrderInfoList">
+			<soap:operation soapAction="SellerService41#GetProductOrderInfoList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ApproveCancelApplication">
+			<soap:operation soapAction="SellerService41#ApproveCancelApplication" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ApproveReturnApplication">
+			<soap:operation soapAction="SellerService41#ApproveReturnApplication" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CancelSale">
+			<soap:operation soapAction="SellerService41#CancelSale" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="DelayProductOrder">
+			<soap:operation soapAction="SellerService41#DelayProductOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChangedProductOrderList">
+			<soap:operation soapAction="SellerService41#GetChangedProductOrderList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="PlaceProductOrder">
+			<soap:operation soapAction="SellerService41#PlaceProductOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReDeliveryExchange">
+			<soap:operation soapAction="SellerService41#ReDeliveryExchange" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RejectExchange">
+			<soap:operation soapAction="SellerService41#RejectExchange" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReleaseExchangeHold">
+			<soap:operation soapAction="SellerService41#ReleaseExchangeHold" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReleaseReturnHold">
+			<soap:operation soapAction="SellerService41#ReleaseReturnHold" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ShipProductOrder">
+			<soap:operation soapAction="SellerService41#ShipProductOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="WithholdExchange">
+			<soap:operation soapAction="SellerService41#WithholdExchange" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="WithholdReturn">
+			<soap:operation soapAction="SellerService41#WithholdReturn" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ApproveCollectedExchange">
+			<soap:operation soapAction="SellerService41#ApproveCollectedExchange" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<!-- SellerService -->
+	<wsdl:service name="SellerService41">
+		<wsdl:port name="SellerService41SOAP11port_http" binding="tns:SellerService41SOAP11Binding">
+			<soap:address location="http://ec.api.naver.com/ShopN/SellerService41" />
+		</wsdl:port>
+		<wsdl:port name="SellerService41SOAP12port_http" binding="tns:SellerService41SOAP12Binding">
+			<soap12:address location="http://ec.api.naver.com/ShopN/SellerService41" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
