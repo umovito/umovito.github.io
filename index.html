@@ -100,7 +100,7 @@
 
 	function calculateTimerAndProgress(pass, count) {
 		if(pass >= 0) {
-			if(count>=starting) width = (count-config.starting)/(config.progress-config.starting-1000)/100;
+			if(count>=config.starting) width = (count-config.starting)/(config.progress-config.starting-1000)/100;
 			bar1.set(width, false);
 			if(count-config.starting>=0) {
 				let time = config.progress - count;
