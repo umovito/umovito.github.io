@@ -425,3 +425,6 @@ canvas {
     animation-timing-function: cubic-bezier(0, 1, 0, 1);
     animation-direction: normal;
 }
+#config {
+    display:none;
+}
