@@ -7,6 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="timer.css"/>
 	<link rel="stylesheet" type="text/css" href="loading-bar.css"/>
 	<script type="text/javascript" src="loading-bar.js"></script>
 	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -31,440 +32,32 @@
 			}
 		});
 	</script>
-	<style>
-		* {
-			box-sizing: border-box;
-		}
-		html, body {
-			position: fixed;
-			top: 0;
-			left: 0;
-			margin: 0;
-			height: 100%;
-			overflow: hidden;
-		}
-		body {
-			padding:0; margin: 0; background-color: #000000; width: 1920px; height: 1080px;
-		}
-		::scrollbar {
-			appearance: none;
-			width: 7px;
-		}
-		::scrollbar-thumb {
-			border-radius: 4px;
-			background-color: rgba(0, 0, 0, .5);
-			box-shadow: 0 0 1px rgba(255, 255, 255, .5);
-		}
-		canvas {
-			display: block;
-		}
-		#particles-js {
-			position:absolute; width: 100%; height: 100%; opacity: 0;
-		}
-		.ldBar-label {
-			display:none;
-		}
-		#time {
-			position:absolute;
-			width:1920px;
-			margin-top:-763px;
-			text-align:center;
-			font-size:200px;
-			color: rgb(156, 156, 156);
-			filter: drop-shadow(0px 0px 5px black);
-		}
-		#ticker {
-			position:absolute;
-			width: 1000px;
-			height: 1000px;
-			margin: 40px 0 0 460px;
-			top: 0px;
-			left: 0px;
-			border-left: 15px solid rgba(156, 156, 156, 0.5);
-			border-top: 15px solid rgba(0, 0, 0, 0);
-			border-right: 15px solid rgba(156, 156, 156, 0.5);
-			border-bottom: 15px solid rgba(0, 0, 0, 0);
-			border-radius: 50%;
-			opacity: 0;
-			background-color: rgba(0,0,0,0);
-		}
-		@keyframes rotating {
-			0% {
-				transform: rotate(0deg);
-			}
-			50% {
-				transform: rotate(180deg);
-			}
-			100% {
-				transform: rotate(360deg);
-			}
-		}
-		.rotatingease {
-			animation-name: rotating;
-			animation-duration: 2s;
-			animation-iteration-count: infinite;
-			animation-direction: normal;
-			animation-timing-function: ease;
-		}
-		.rotating {
-			animation-name: rotating;
-			animation-duration: 6s;
-			animation-iteration-count: infinite;
-			animation-direction: normal;
-			animation-timing-function: linear;
-		}
-		@keyframes scaleOut {
-			0% {
-				width: 1000px;
-				height: 1000px;
-				margin: 40px 0 0 460px;
-				border-radius: 500px;
-				opacity: 0;
-				transform: rotate(0deg);
-			}
-			100% {
-				width: 500px;
-				height: 500px;
-				margin: 290px 0 0 710px;
-				opacity: 1;
-				transform: rotate(11340deg);
-			}
-		}
-		.scaleOut.rotating {
-			animation: scaleOut 10s normal 1 forwards;
-			animation-timing-function: cubic-bezier(0, 0.75, 0.75, 1);
-			animation-fill-mode: forwards;
-		}
-		#s {
-			margin-top:-140px;
-		}
-		#bar2 path.mainline {
-			stroke-width:10;
-		}
-		@keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
-		.fadein {
-			animation: fadeIn 1s normal 1 forwards;
-			animation-timing-function: ease;
-			animation-fill-mode: forwards;
-		}
-		@keyframes fadeOut {
-			0% {
-				transform: scale(1);
-				filter: blur(0px);
-				opacity: 1;
-			}
-			100% {
-				transform: scale(1.75);
-				filter: blur(50px);
-				opacity: 0;
-			}
-		}
-		.fadeout {
-			animation-name: fadeOut;
-			animation-duration: 10s;
-			animation-iteration-count: 1;
-			animation-timing-function: cubic-bezier(0.75, 0, 0.75, 0);
-			animation-direction: normal;
-			animation-fill-mode: forwards;
-		}
-		@keyframes fadeOutTicker {
-			0% {
-				opacity: 1;
-				transform: rotate(0deg);
-			}
-			100% {
-				opacity: 0;
-				transform: rotate(1800deg);
-			}
-		}
-		.fadeoutticker {
-			animation-name: fadeOutTicker;
-			animation-duration: 10s;
-			animation-iteration-count: 1;
-			animation-timing-function: cubic-bezier(0, 1, 0, 1);
-			animation-direction: normal;
-			animation-fill-mode: forwards;
-		}
-		#bar svg g:first-child rect {
-			fill: url(#grad1), url(#grad2);
-		}
-		@keyframes color1 {
-			0% {
-				color: rgb(156, 156, 156);
-			}
-			100% {
-				color: rgba(255, 247, 201);
-			}
-		}
-		.color1 {
-			animation-name: color1;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: linear;
-			animation-direction: normal;
-		}
-		@keyframes bordercolor1 {
-			0% {
-				border-left-color: rgba(255, 255, 255, 0.7);
-				border-right-color: rgba(255, 255, 255, 0.7);
-				transform: rotate(0deg);
-			}
-			100% {
-				border-left-color: rgba(255, 247, 201, 0.7);
-				border-right-color: rgba(255, 247, 201, 0.7);
-				transform: rotate(2160deg);
-			}
-		}
-		.bordercolor1 {
-			animation-name: bordercolor1;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: cubic-bezier(0, 1, 0, 1);
-			animation-direction: normal;
-		}
-		@keyframes color2 {
-			0% {
-				color: rgba(255, 247, 201);
-			}
-			100% {
-				color: rgb(241, 180, 139);
-			}
-		}
-		.color2 {
-			animation-name: color2;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: linear;
-			animation-direction: normal;
-		}
-		@keyframes bordercolor2 {
-			0% {
-				border-left-color: rgba(255, 247, 201, 0.7);
-				border-right-color: rgba(255, 247, 201, 0.7);
-				transform: rotate(0deg);
-			}
-			100% {
-				border-left-color: rgba(241, 180, 139, 0.7);
-				border-right-color: rgba(241, 180, 139, 0.7);
-				transform: rotate(2160deg);
-			}
-		}
-		.bordercolor2 {
-			animation-name: bordercolor2;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: cubic-bezier(0, 1, 0, 1);;
-			animation-direction: normal;
-		}
-		@keyframes color3 {
-			0% {
-				color: rgba(241, 180, 139);
-			}
-			100% {
-				color: rgb(223, 113, 86);
-			}
-		}
-		.color3 {
-			animation-name: color3;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: linear;
-			animation-direction: normal;
-		}
-		@keyframes bordercolor3 {
-			0% {
-				border-left-color: rgba(241, 180, 139, 0.7);
-				border-right-color: rgba(241, 180, 139, 0.7);
-				transform: rotate(0deg);
-			}
-			100% {
-				border-left-color: rgba(223, 113, 86, 0.7);
-				border-right-color: rgba(223, 113, 86, 0.7);
-				transform: rotate(2160deg);
-			}
-		}
-		.bordercolor3 {
-			animation-name: bordercolor3;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: cubic-bezier(0, 1, 0, 1);;
-			animation-direction: normal;
-		}
-		@keyframes color4 {
-			0% {
-				color: rgba(223, 113, 86);
-			}
-			100% {
-				color: rgb(240, 58, 58);
-			}
-		}
-		.color4 {
-			animation-name: color4;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: linear;
-			animation-direction: normal;
-		}
-		@keyframes bordercolor4 {
-			0% {
-				border-left-color:  rgba(223, 113, 86, 0.7);
-				border-right-color:  rgba(223, 113, 86, 0.7);
-				transform: rotate(0deg);
-			}
-			100% {
-				border-left-color: rgba(240, 58, 58, 0.7);
-				border-right-color: rgba(240, 58, 58, 0.7);
-				transform: rotate(2160deg);
-			}
-		}
-		.bordercolor4 {
-			animation-name: bordercolor4;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: cubic-bezier(0, 1, 0, 1);;
-			animation-direction: normal;
-		}
-		#tooltip {
-			position: fixed;
-			font-size: 200px;
-			color: white;
-			background: black;
-			top: 0px;
-			left: 0px;
-		}
-		.fadeoutfast {
-			animation-name: fadeOut;
-			animation-duration: 2s;
-			animation-iteration-count: 1;
-			animation-direction: normal;
-			animation-timing-function: cubic-bezier(0.75, 0, 0.75, 0);
-			animation-fill-mode: forwards;
-		}
-		#wall {
-			position: absolute;
-			top: -1000px;
-			left: -1000px;
-			width: 4000px;
-			height: 4000px;
-			display: block;
-			opacity: 0.2;
-			background: 
-				radial-gradient(at top left, rgba(68, 52, 141, 0.5), transparent 4000px),
-				radial-gradient(at top right,rgba(13, 99, 66, 0.5), transparent 3300px),
-				radial-gradient(at bottom left, rgba(17, 134, 134, 0.5), transparent 2400px),
-				radial-gradient(at bottom right, rgba(129, 28, 50, 0.5), transparent 4000px);
-		}
-		@keyframes bgmove {
-			0% {
-				transform: rotate(0deg);
-			}
-			100% {
-				transform: rotate(1800deg);
-			}
-		}
-		.bgmove {
-			animation: bgmove 60s normal infinite;
-			animation-timing-function: linear;
-		}
-		@keyframes bgopacity {
-			0% {
-				opacity: 0.2;
-				transform: rotate(0deg);
-			}
-			100% {
-				opacity: 1;
-				transform: rotate(1800deg);
-			}
-		}
-		.bgopacity {
-			animation: bgopacity 60s normal 1;
-			animation-timing-function: linear;
-			animation-fill-mode: forwards;
-		}
-		#tickline {
-			z-index:-1;
-		}
-		@keyframes color32 {
-			0% {
-				color: rgba(156, 156, 156);
-			}
-			100% {
-				color: rgb(255, 129, 79);
-			}
-		}
-		.color32 {
-			animation-name: color32;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: linear;
-			animation-direction: normal;
-		}
-		@keyframes bordercolor32 {
-			0% {
-				border-left-color: rgba(255, 255, 255, 0.7);
-				border-right-color: rgba(255, 255, 255, 0.7);
-				transform: rotate(0deg);
-			}
-			100% {
-				border-left-color: rgba(255, 129, 79, 0.7);
-				border-right-color: rgba(255, 129, 79, 0.7);
-				transform: rotate(2160deg);
-			}
-		}
-		.bordercolor32 {
-			animation-name: bordercolor32;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: cubic-bezier(0, 1, 0, 1);
-			animation-direction: normal;
-		}
-		@keyframes color33 {
-			0% {
-				color: rgb(255, 129, 79);
-			}
-			100% {
-				color: rgb(216, 0, 0);
-			}
-		}
-		.color33 {
-			animation-name: color33;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: linear;
-			animation-direction: normal;
-		}
-		@keyframes bordercolor33 {
-			0% {
-				border-left-color: rgba(255, 129, 79, 0.7);
-				border-right-color: rgba(255, 129, 79, 0.7);
-				transform: rotate(0deg);
-			}
-			100% {
-				border-left-color: rgba(216, 0, 0, 0.7);
-				border-right-color: rgba(216, 0, 0, 0.7);
-				transform: rotate(2160deg);
-			}
-		}
-		.bordercolor33 {
-			animation-name: bordercolor33;
-			animation-duration: 1s;
-			animation-iteration-count: 1;
-			animation-timing-function: cubic-bezier(0, 1, 0, 1);
-			animation-direction: normal;
-		}
-	</style>
 </head>
 <body onclick="start()">
+	<div id="config">
+		<select id="bgmselect">
+			<option value="1.mp3">1</option>
+			<option value="2.mp3">2</option>
+			<option value="3.mp3">3</option>
+			<option value="4.mp3">4</option>
+		</select>
+		<select id="bgselect">
+			<option value="line.svg">line</option>
+			<option value="maze.svg">maze</option>
+			<option value="firefly.svg">firefly</option>
+			<option value="firework.svg">firework</option>
+			<option value="rain.svg">rain</option>
+			<option value="raindrop.svg">raindrop</option>
+		</select>
+		<select id="chbgselect">
+			<option value="ch_firework.svg">firework</option>
+			<option value="ch_rain.svg">rain</option>
+		</select>
+		<button onclick="start()"></button>
+	</div>
 	<div id="wall" class="bgmove" style="overflow:hidden;"></div>
 	<div id="particles-js"></div>
-	<div id="bar" class="ldBar"
+	<!--div id="bar" class="ldBar"
   style="width:1920px;height:1080px;top:0;left:0;",
   data-value="0",
   data-type="fill",
@@ -473,7 +66,17 @@
   data-fill-background="url(#grad1)",
   data-pattern-size="175",
   data-path="M 418.75 560.156 L 418.75 363.281 Q 391.406 365.625 363.672 369.531 A 681.881 681.881 0 0 0 350.659 371.484 Q 336.741 373.72 327.302 375.956 A 146.629 146.629 0 0 0 321.875 377.344 L 286.719 311.719 Q 280.469 322.656 273.047 333.203 Q 265.625 343.75 258.594 353.906 A 1031.7 1031.7 0 0 0 277.539 373.145 A 1288.327 1288.327 0 0 0 298.437 393.359 Q 320.313 414.063 341.797 433.594 A 3436.002 3436.002 0 0 0 362.695 452.441 A 2822.731 2822.731 0 0 0 382.422 469.922 Q 401.563 486.719 415.625 496.875 L 351.563 553.906 Q 328.124 519.127 296.271 477.762 A 2078.423 2078.423 0 0 0 294.141 475 A 1509.705 1509.705 0 0 0 245.584 415.26 A 1302.827 1302.827 0 0 0 228.125 395.312 Q 186.719 447.656 135.938 493.75 A 1177.063 1177.063 0 0 1 33.17 576.743 A 1292.092 1292.092 0 0 1 25.781 582.031 L 0 554.688 Q 46.094 517.969 85.547 474.609 A 740.53 740.53 0 0 0 151.625 390.907 A 681.347 681.347 0 0 0 155.469 385.156 A 698.356 698.356 0 0 0 207.813 291.406 A 560.525 560.525 0 0 0 230.411 234.486 A 458.514 458.514 0 0 0 240.625 199.219 A 5393.76 5393.76 0 0 1 230.884 199.585 Q 216.895 200.098 206.641 200.391 A 454.829 454.829 0 0 0 199.39 200.659 Q 187.891 201.172 172.656 202.344 A 768.392 768.392 0 0 0 167.993 202.783 Q 162.807 203.287 156.062 203.998 A 2482.917 2482.917 0 0 0 149.609 204.688 Q 135.156 206.25 119.141 208.203 Q 103.125 210.156 87.5 212.5 A 730.142 730.142 0 0 0 74.576 214.551 Q 68.705 215.54 63.529 216.528 A 398.612 398.612 0 0 0 60.156 217.187 L 14.844 142.188 A 521.975 521.975 0 0 0 23.706 144 Q 27.673 144.778 32.098 145.595 A 1031.274 1031.274 0 0 0 41.406 147.266 Q 57.031 150 74.219 151.953 Q 91.406 153.906 108.203 155.469 Q 123.885 156.927 136.502 157.024 A 231.785 231.785 0 0 0 138.281 157.031 A 1063.294 1063.294 0 0 0 153.045 157.135 Q 197.125 157.135 232.51 153.299 A 520.286 520.286 0 0 0 237.5 152.734 Q 280.469 147.656 325.781 136.719 L 351.563 164.844 Q 339.063 204.688 323.047 240.625 Q 307.031 276.563 286.719 310.938 Q 318.75 316.406 341.016 317.578 A 508.621 508.621 0 0 0 358.787 318.213 Q 371.016 318.428 382.031 317.969 A 107.565 107.565 0 0 1 392.102 317.45 Q 392.448 317.448 392.795 317.448 A 124.269 124.269 0 0 1 398.437 317.578 Q 407.031 317.969 418.75 317.188 L 418.75 128.906 A 58.399 58.399 0 0 0 417.871 118.555 A 45.428 45.428 0 0 0 415.234 109.375 A 35.416 35.416 0 0 0 409.956 100.575 Q 407.228 97.189 403.513 94.014 A 60.719 60.719 0 0 0 402.734 93.359 A 66.057 66.057 0 0 0 394.702 87.74 Q 390.403 85.154 385.187 82.729 A 140.867 140.867 0 0 0 378.125 79.688 A 228.571 228.571 0 0 0 365.345 75.049 Q 353.513 71.118 338.281 67.188 L 356.25 33.594 A 1074.95 1074.95 0 0 1 375.098 36.23 A 1414.876 1414.876 0 0 1 395.703 39.453 Q 417.188 42.969 438.281 47.266 A 3657.836 3657.836 0 0 1 478.674 55.725 A 3367.719 3367.719 0 0 1 479.297 55.859 Q 499.219 60.156 513.281 64.063 A 144.383 144.383 0 0 0 512.305 68.877 Q 511.239 74.589 510.173 82.3 A 444.576 444.576 0 0 0 510.156 82.422 L 507.031 105.078 A 566.689 566.689 0 0 0 505.969 113.19 Q 505.176 119.629 504.688 125 A 1765.118 1765.118 0 0 0 504.504 127.026 Q 503.945 133.263 503.909 134.262 A 3.249 3.249 0 0 0 503.906 134.375 L 503.906 503.125 Q 503.906 527.344 502.734 558.594 A 2605.525 2605.525 0 0 1 499.609 621.484 A 3264.44 3264.44 0 0 1 496.46 667.407 A 2853.173 2853.173 0 0 1 495.312 682.031 A 70568.473 70568.473 0 0 0 494.189 695.898 Q 492.578 715.82 491.406 730.469 L 425 739.063 A 382.957 382.957 0 0 1 423.938 726.996 Q 423.145 716.162 422.656 702.734 A 3489.981 3489.981 0 0 0 421.777 680.566 A 4179.682 4179.682 0 0 0 420.703 657.031 A 1504.97 1504.97 0 0 1 419.141 607.812 A 3288.788 3288.788 0 0 1 418.848 583.398 A 2836.981 2836.981 0 0 1 418.75 560.156 Z M 1421.094 257.813 L 1368.75 321.094 A 3397.042 3397.042 0 0 1 1351.611 315.326 Q 1343.921 312.717 1335.315 309.764 A 7003.939 7003.939 0 0 1 1317.188 303.516 A 3438.515 3438.515 0 0 0 1285.645 292.773 A 4151.99 4151.99 0 0 0 1251.953 281.641 Q 1217.188 270.313 1182.031 258.984 A 5830.827 5830.827 0 0 0 1148.047 248.145 A 4676.295 4676.295 0 0 0 1116.406 238.281 A 1149.3 1149.3 0 0 1 975 301.172 A 1309.77 1309.77 0 0 1 825.781 346.094 L 802.344 317.188 A 1085.782 1085.782 0 0 0 905.748 280.555 A 980.537 980.537 0 0 0 920.703 274.219 A 1149.815 1149.815 0 0 0 1000.317 236.133 A 1004.353 1004.353 0 0 0 1025 222.656 Q 1073.438 195.313 1113.672 165.625 A 754.194 754.194 0 0 0 1155.846 132.227 A 591.455 591.455 0 0 0 1184.375 106.25 L 1097.266 106.25 A 854.551 854.551 0 0 0 1024.847 109.241 A 780.148 780.148 0 0 0 1014.844 110.156 A 185.147 185.147 0 0 1 1010.522 110.962 Q 1003.418 112.207 992.578 113.672 Q 978.125 115.625 961.719 117.969 Q 945.313 120.313 928.516 123.047 Q 916.968 124.927 907.82 126.622 A 564.272 564.272 0 0 0 900 128.125 L 853.125 53.125 A 767.515 767.515 0 0 0 858.667 53.955 Q 864.861 54.861 873.027 55.976 A 2615.459 2615.459 0 0 0 880.859 57.031 Q 898.438 59.375 917.969 61.328 Q 937.5 63.281 956.25 64.844 A 540.352 540.352 0 0 0 969.543 65.796 Q 976.067 66.177 981.755 66.32 A 260.007 260.007 0 0 0 988.281 66.406 A 2516.305 2516.305 0 0 0 1010.968 66.296 Q 1021.085 66.205 1032.307 66.037 A 4870.202 4870.202 0 0 0 1055.859 65.625 A 1827.512 1827.512 0 0 0 1117.017 63.354 A 2080.968 2080.968 0 0 0 1138.281 62.109 Q 1181.25 59.375 1223.828 55.078 A 869.653 869.653 0 0 0 1262.968 50.274 Q 1282.678 47.375 1300 43.75 L 1328.125 73.438 Q 1295.313 113.281 1255.078 146.875 A 816.883 816.883 0 0 1 1173.802 206.43 A 893.14 893.14 0 0 1 1167.969 210.156 A 1013.73 1013.73 0 0 0 1204.803 219.617 A 1226.958 1226.958 0 0 0 1228.516 225 A 2273.972 2273.972 0 0 0 1294.531 238.281 Q 1328.125 244.531 1360.547 249.609 A 1531.958 1531.958 0 0 0 1391.895 254.199 A 1226.906 1226.906 0 0 0 1421.094 257.813 Z M 1175.781 435.938 L 1175.781 478.125 A 538.485 538.485 0 0 1 1175.671 488.69 Q 1175.58 493.344 1175.412 498.418 A 933.254 933.254 0 0 1 1175 508.984 Q 1174.219 526.563 1173.047 544.531 Q 1171.875 562.5 1170.313 580.078 Q 1168.97 595.184 1167.05 607.117 A 255.641 255.641 0 0 1 1166.406 610.937 L 1094.531 622.656 A 665.786 665.786 0 0 1 1093.152 607.882 Q 1092.419 599.023 1091.797 589.063 Q 1090.625 570.313 1089.844 551.563 Q 1089.063 532.813 1088.281 516.406 Q 1087.5 500 1087.5 489.844 L 1087.5 438.281 Q 1055.469 439.063 1025.391 440.234 A 7280.689 7280.689 0 0 1 996.387 441.309 A 5776.675 5776.675 0 0 1 969.531 442.187 Q 945.462 442.917 926.159 443.987 A 1205.889 1205.889 0 0 0 923.438 444.141 Q 903.125 445.313 891.406 446.094 A 729.013 729.013 0 0 0 876.66 447.07 A 955.241 955.241 0 0 0 860.547 448.437 Q 843.75 450 826.563 451.563 A 712.975 712.975 0 0 0 792.578 455.469 Q 776.897 457.657 764.279 459.845 A 610.748 610.748 0 0 0 762.5 460.156 L 731.25 382.031 A 2100.835 2100.835 0 0 0 766.269 385.608 Q 784.654 387.338 805.065 388.984 A 3467.347 3467.347 0 0 0 810.938 389.453 Q 855.469 392.969 890.625 394.531 A 694.354 694.354 0 0 0 900.732 394.873 Q 916.992 395.313 939.844 395.313 Q 970.313 395.313 1006.641 394.922 A 3884.176 3884.176 0 0 0 1062.891 393.896 A 4393.892 4393.892 0 0 0 1082.422 393.359 A 9557.49 9557.49 0 0 1 1139.844 391.821 A 8433.44 8433.44 0 0 1 1158.203 391.406 A 4517.87 4517.87 0 0 0 1193.066 390.527 A 3474.25 3474.25 0 0 0 1225 389.453 Q 1252.255 388.405 1270.133 387.669 A 7954.213 7954.213 0 0 0 1274.219 387.5 A 989.298 989.298 0 0 0 1314.209 385.449 A 1131.375 1131.375 0 0 0 1328.125 384.375 Q 1356.25 382.031 1383.984 379.297 A 2475.684 2475.684 0 0 0 1424.487 374.976 A 2225.496 2225.496 0 0 0 1437.5 373.438 Q 1463.281 370.313 1485.156 367.188 L 1472.656 440.625 A 2048.022 2048.022 0 0 0 1460.114 440.039 Q 1448.975 439.551 1435.547 439.063 Q 1414.063 438.281 1389.063 437.5 A 27949.53 27949.53 0 0 0 1340.814 436.035 A 30576.509 30576.509 0 0 0 1337.5 435.937 Q 1310.938 435.156 1285.156 435.156 A 2141.514 2141.514 0 0 1 1275.22 435.132 Q 1259.473 435.059 1238.672 434.766 Q 1210.938 434.375 1175.781 435.938 Z M 467.969 34.375 L 482.813 0 A 604.296 604.296 0 0 1 502.596 2.826 Q 513.063 4.488 524.609 6.641 Q 547.656 10.938 570.313 15.234 A 3342.405 3342.405 0 0 1 608.765 22.754 A 3011.5 3011.5 0 0 1 614.062 23.828 A 3198.226 3198.226 0 0 1 624.17 25.903 Q 638.672 28.906 649.219 31.25 A 981.274 981.274 0 0 0 648.804 35.059 Q 648.145 41.211 647.266 50 A 824.361 824.361 0 0 0 645.728 67.139 A 740.122 740.122 0 0 0 645.313 72.656 A 1507.161 1507.161 0 0 1 644.531 83.105 A 1124.757 1124.757 0 0 1 643.75 92.578 A 2013.219 2013.219 0 0 0 643.567 94.696 Q 643.007 101.213 642.971 102.23 A 3.353 3.353 0 0 0 642.969 102.344 L 642.969 531.25 A 1205.835 1205.835 0 0 1 642.711 555.414 Q 642.456 568.119 641.947 582.259 A 2031.013 2031.013 0 0 1 641.797 586.328 Q 640.625 617.188 638.672 648.828 Q 636.719 680.469 633.984 709.375 A 1172.446 1172.446 0 0 1 632.593 723.242 Q 630.469 743.164 628.125 757.813 L 560.156 767.188 A 382.957 382.957 0 0 1 559.094 755.121 Q 558.301 744.287 557.813 730.859 A 8150.871 8150.871 0 0 1 557.8 730.523 Q 557.413 719.853 557.025 708.414 A 11106.533 11106.533 0 0 1 556.25 684.766 Q 555.469 660.156 555.078 635.156 A 3288.788 3288.788 0 0 1 554.785 610.742 A 2836.981 2836.981 0 0 1 554.688 587.5 L 554.688 99.219 A 46.08 46.08 0 0 0 539.93 64.571 A 59.054 59.054 0 0 0 536.719 61.719 A 72.141 72.141 0 0 0 524.439 53.776 Q 511.134 46.762 489.828 40.32 A 435.174 435.174 0 0 0 467.969 34.375 Z M 1390.625 664.063 L 1378.906 735.156 A 3258.382 3258.382 0 0 0 1329.102 733.105 A 4170.827 4170.827 0 0 0 1275 731.641 A 4019.319 4019.319 0 0 0 1191.284 730.762 A 3893.435 3893.435 0 0 0 1163.672 730.859 A 6922.48 6922.48 0 0 0 1109.863 731.445 A 5990.158 5990.158 0 0 0 1058.594 732.422 A 2713.161 2713.161 0 0 0 1023.291 733.466 Q 995.703 734.473 974.219 735.938 Q 952.616 737.518 939.72 731.459 A 31.974 31.974 0 0 1 929.297 723.828 Q 916.406 709.375 916.406 691.406 L 916.406 606.25 A 283.017 283.017 0 0 0 916.254 596.645 Q 915.94 587.446 914.983 580.984 A 78.815 78.815 0 0 0 914.844 580.078 Q 913.281 570.313 906.641 563.672 A 33.879 33.879 0 0 0 900.763 559.058 Q 897.8 557.184 894.093 555.506 A 84.799 84.799 0 0 0 885.937 552.344 Q 871.875 547.656 847.656 541.406 L 862.5 505.469 Q 871.472 506.665 885.253 508.548 A 15302.755 15302.755 0 0 1 894.141 509.766 A 5060.33 5060.33 0 0 1 924.902 514.087 A 5671.59 5671.59 0 0 1 935.547 515.625 A 5158.54 5158.54 0 0 1 976.709 521.777 A 4748.497 4748.497 0 0 1 977.344 521.875 A 3016.112 3016.112 0 0 0 986.963 523.34 Q 996.329 524.75 1003.41 525.744 A 866.707 866.707 0 0 0 1009.375 526.563 Q 1007.841 535.768 1006.307 555.141 A 954.681 954.681 0 0 0 1006.25 555.859 A 610.692 610.692 0 0 0 1005.298 569.977 Q 1004.916 576.9 1004.773 582.93 A 291.962 291.962 0 0 0 1004.688 589.844 L 1004.688 666.406 Q 1004.688 679.688 1007.031 682.031 A 5.22 5.22 0 0 0 1008.64 683.042 Q 1012.116 684.558 1021.094 685.156 A 2499.444 2499.444 0 0 0 1037.006 685.101 Q 1051.318 685.01 1069.141 684.766 A 2649.879 2649.879 0 0 0 1099.023 684.18 A 3448.815 3448.815 0 0 0 1131.641 683.203 A 8167.577 8167.577 0 0 0 1192.908 680.853 A 9021.782 9021.782 0 0 0 1201.953 680.469 Q 1238.281 678.906 1272.656 676.172 A 7895.97 7895.97 0 0 0 1306.152 673.438 A 6724.431 6724.431 0 0 0 1337.891 670.703 A 829.792 829.792 0 0 0 1359.772 668.488 Q 1376.953 666.504 1390.625 664.063 Z"
-></div>
+></div-->
+<div id="bar" class="ldBar"
+  style="width:1920px;height:1080px;top:0;left:0;",
+  data-value="0",
+  data-type="fill",
+  data-precision="0.0001",
+  data-fill="./rain.svg",
+  data-fill-background="url(#grad1)",
+  data-pattern-size="175",
+  data-path="M714.40-612L714.40-30.40Q694.40-7.20 678.80 24Q663.20 55.20 657.60 100.80L657.60 100.80L633.60 100.80Q633.60 78.40 632.80 59.20Q632 40 631.20 22.40Q630.40 4.80 629.60-12.80Q628.80-30.40 628.80-50.40L628.80-50.40L628.80-610.40Q628.80-624 622-635.20Q615.20-646.40 604.40-654.80Q593.60-663.20 580-670Q566.40-676.80 552.80-681.60L552.80-681.60L560-700L735.20-661.60L714.40-612ZM560.80-569.60L560.80-74.40Q540.80-51.20 525.20-19.60Q509.60 12 504 57.60L504 57.60L480.80 57.60Q480.80 35.20 480 16Q479.20-3.20 478-21.20Q476.80-39.20 476-56.80Q475.20-74.40 475.20-94.40L475.20-94.40L475.20-348.80L452-344.80L419.20-327.20L376.80-374.40Q371.20-380 364.40-393.20Q357.60-406.40 356-414.40L356-414.40L364-418.40Q368-412 375.60-408.40Q383.20-404.80 390.40-400L390.40-400Q404-399.20 418-399.60Q432-400 445.60-400L445.60-400L475.20-402.40L475.20-568Q475.20-581.60 469.20-592.40Q463.20-603.20 452.80-612Q442.40-620.80 429.60-627.60Q416.80-634.40 404-639.20L404-639.20L410.40-657.60L581.60-619.20L560.80-569.60ZM284-303.20L284-303.20Q274.40-310.40 266.40-308L266.40-308Q236.80-272.80 206.40-244.40Q176-216 145.60-194.40L145.60-194.40Q124.80-179.20 107.60-168.40Q90.40-157.60 74.40-149.20Q58.40-140.80 42-134Q25.60-127.20 5.60-121.60L5.60-121.60L8.80-144.80Q21.60-144 29.20-146.40Q36.80-148.80 44.80-154.40L44.80-154.40Q52.80-160 57.60-165.60Q62.40-171.20 66-177.20Q69.60-183.20 74-190Q78.40-196.80 87.20-204.80L87.20-204.80Q112.80-228.80 140-260.80Q167.20-292.80 193.20-330.40Q219.20-368 241.60-409.20Q264-450.40 279.20-491.20L279.20-491.20Q248.80-489.60 220.40-486.40Q192-483.20 162.40-479.20L162.40-479.20L132-458.40L81.60-512Q73.60-520 69.60-529.20Q65.60-538.40 62.40-551.20L62.40-551.20L73.60-557.60Q77.60-546.40 84.40-543.60Q91.20-540.80 99.20-535.20L99.20-535.20Q112.80-533.60 124.80-533.20Q136.80-532.80 152-533.60L152-533.60Q184-534.40 215.60-536Q247.20-537.60 276.80-541.60L276.80-541.60Q290.40-545.60 298.40-552.40Q306.40-559.20 314.40-569.60L314.40-569.60L407.20-510.40Q399.20-506.40 390.80-498.80Q382.40-491.20 377.60-482.40L377.60-482.40Q358.40-440.80 335.20-403.60Q312-366.40 286.40-332.80L286.40-332.80Q293.60-330.40 299.20-332L299.20-332Q302.40-332.80 306-334.80Q309.60-336.80 314.40-340L314.40-340Q318.40-342.40 324.40-343.60Q330.40-344.80 336.80-343.20L336.80-343.20Q344-318.40 364.40-305.60Q384.80-292.80 415.20-288L415.20-288Q418.40-276 418.80-263.60Q419.20-251.20 419.20-239.20Q419.20-227.20 420-215.20Q420.80-203.20 424.80-191.20L424.80-191.20Q421.60-184 414-175.20Q406.40-166.40 397.20-157.20Q388-148 379.20-139.60Q370.40-131.20 364.80-124.80L364.80-124.80L352.80-135.20Q363.20-142.40 366-148.80Q368.80-155.20 367.20-168.80L367.20-168.80Q364.80-183.20 354.40-203.20Q344-223.20 331.60-243.20Q319.20-263.20 306-279.60Q292.80-296 284-303.20ZM256-300.80L256-300.80L255.20-299.20Q256-300 256-300.80ZM1041.60-623.20L1041.60-623.20Q1101.60-624.80 1165.20-628.80Q1228.80-632.80 1289.60-639.20L1289.60-639.20Q1304.80-641.60 1315.20-647.60Q1325.60-653.60 1333.60-661.60L1333.60-661.60L1419.20-601.60Q1408.80-598.40 1396-590.80Q1383.20-583.20 1374.40-576L1374.40-576Q1348.80-554.40 1314.40-530.40Q1280-506.40 1240-482.40L1240-482.40Q1246.40-480.80 1252-481.20Q1257.60-481.60 1261.60-482.40L1261.60-482.40Q1267.20-483.20 1273.20-486.40Q1279.20-489.60 1282.40-491.20L1282.40-491.20Q1288.80-492.80 1292.40-494.40Q1296-496 1305.60-495.20L1305.60-495.20Q1312-486.40 1325.20-481.20Q1338.40-476 1354.40-473.60Q1370.40-471.20 1388-471.60Q1405.60-472 1421.60-474.40L1421.60-474.40Q1432-467.20 1440-456.40Q1448-445.60 1455.20-434.40Q1462.40-423.20 1470-412.80Q1477.60-402.40 1487.20-395.20L1487.20-395.20Q1485.60-387.20 1480.80-380.40Q1476-373.60 1469.60-366.80Q1463.20-360 1456.80-353.20Q1450.40-346.40 1447.20-337.60L1447.20-337.60L1434.40-344.80Q1440.80-348.80 1442.40-354.80Q1444-360.80 1440-364.80L1440-364.80Q1415.20-382.40 1383.60-398.80Q1352-415.20 1321.60-428Q1291.20-440.80 1266.40-449.20Q1241.60-457.60 1229.60-459.20L1229.60-459.20Q1212.80-461.60 1196.80-456.80L1196.80-456.80Q1145.60-428 1095.60-404.80Q1045.60-381.60 1004.80-370.40L1004.80-370.40Q979.20-362.40 958-357.20Q936.80-352 917.60-348.80L917.60-348.80Q901.60-346.40 887.20-344.80Q872.80-343.20 856-342.40L856-342.40L860.80-365.60Q889.60-358.40 908-365.60L908-365.60Q917.60-368.80 923.60-373.20Q929.60-377.60 935.20-381.60Q940.80-385.60 947.60-390Q954.40-394.40 964-399.20L964-399.20Q1000.80-416.80 1040.40-438.40Q1080-460 1119.20-484Q1158.40-508 1196-534.40Q1233.60-560.80 1266.40-588L1266.40-588Q1241.60-585.60 1213.60-582.80Q1185.60-580 1157.20-576.80Q1128.80-573.60 1101.60-570.80Q1074.40-568 1051.20-565.60L1051.20-565.60L1016-546.40L958.40-601.60Q950.40-609.60 946.40-620Q942.40-630.40 939.20-642.40L939.20-642.40L950.40-648.80Q954.40-638.40 961.20-634.80Q968-631.20 976-626.40L976-626.40Q989.60-624 1008-623.20Q1026.40-622.40 1041.60-623.20ZM1573.60-232L1472-249.60Q1420-250.40 1364.80-249.60Q1309.60-248.80 1253.60-247.20L1253.60-247.20L1253.60-116.80Q1212.80-96 1188.80-44.80L1188.80-44.80L1168-44.80L1168-244.80Q1104-241.60 1045.20-238.40Q986.40-235.20 936.80-232L936.80-232L880.80-214.40L815.20-292.80Q808.80-300 806.40-310.40Q804-320.80 801.60-332L801.60-332L817.60-337.60Q819.20-328.80 825.20-322.40Q831.20-316 839.20-311.20L839.20-311.20Q847.20-308 858.80-305.60Q870.40-303.20 883.60-301.20Q896.80-299.20 909.60-297.60Q922.40-296 932.80-296L932.80-296Q987.20-294.40 1052.80-294.80Q1118.40-295.20 1186-297.20Q1253.60-299.20 1318.80-302.40Q1384-305.60 1438.40-308L1438.40-308L1515.20-336L1578.40-238.40L1573.60-232ZM1474.40 58.40L1382.40 52.80Q1349.60 52.80 1308 53.20Q1266.40 53.60 1222.80 54.40Q1179.20 55.20 1137.20 56.40Q1095.20 57.60 1061.60 58.40L1061.60 58.40Q1040.80 59.20 1015.60 61.20Q990.40 63.20 971.20 66.40L971.20 66.40Q973.60 52.80 976.40 32.80Q979.20 12.80 980-0.80L980-0.80Q980.80-24 979.20-48Q977.60-72 973.60-96.80L973.60-96.80Q968-114.40 954.40-124.80Q940.80-135.20 922.40-143.20L922.40-143.20L928.80-156L1080.80-139.20L1064.80-104L1064.80 6.40Q1098.40 8 1136.40 8.40Q1174.40 8.80 1211.20 8Q1248 7.20 1281.60 4.80Q1315.20 2.40 1340-0.80L1340-0.80L1408.80-34.40L1477.60 44.80L1474.40 58.40Z"
+  ></div>
 <div id="time" style="font-family: 'Fugaz One', cursive; visibility: hidden;"><div id="m">05</div><div id="s">00</div></div>
 <div id="ticker" class="rotating"></div>
 <audio id="bgm"><source id="bgmsrc" src="2.mp3" type="audio/mp3"></audio>
@@ -497,266 +100,89 @@
 <script type="text/javascript">
 	var started = false;
 	var bar1;
-	var progress = -11000;
 	let count = 0;
 	let rAF_ID;
 	var width = 0.0;
-	var progress = 312000;
-	var starting = 11000;
-	var lm = 5;
-	var ls = 0;
-	var end;
 	var initialzied = false;
 	var initDate = Date.now();
 	var initcount;
 	var toggles = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	var config = {}, schedules = [
+						[{ timing: 0, procedure: function() { $("#ticker").addClass("scaleOut"); $("#time").css("visibility", "visible");}},
+						 { timing: 10, procedure: function() { $("#ticker").prop("class","rotatingease"); $("#ticker").css("width", "500px"); $("#ticker").css("height", "500px"); $("#ticker").css("margin", "290px 0 0 710px"); $("#ticker").css("opacity", "1");}},
+						 { timing: 60, procedure: function() { $("#wall").prop("class", "bgopacity"); $("#time").prop("class", "color32"); $("#ticker").prop("class", "bordercolor32"); $("#time").css("color", "rgba(255, 129, 79)"); $("#ticker").css("border-left-color", "rgba(255, 129, 79, 0.7)"); $("#ticker").css("border-right-color", "rgba(255, 129, 79, 0.7)"); $("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)"); $("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");}},
+						 { timing: 61, procedure: function() { $("#ticker").prop("class", "rotatingease");}},
+						 { timing: 120, procedure: function() { $("#wall").prop("class", "bgmove"); $("#wall").css("opacity", "1"); $("#particles-js").prop("class", "fadein"); $("#time").prop("class", "color33"); $("#ticker").prop("class", "bordercolor33"); $("#time").css("color", "rgba(216, 0, 0)"); $("#ticker").css("border-left-color", "rgba(216, 0, 0, 0.7)"); $("#ticker").css("border-right-color", "rgba(216, 0, 0, 0.7)"); $("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)"); $("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");}},
+						 { timing: 121, procedure: function() { $("#ticker").prop("class", "rotatingease"); }},
+						 { timing: 170, procedure: function() { $("#time").prop("class", "fadeout"); $("#ticker").prop("class", "fadeoutticker"); }},
+						 { timing: 180, procedure: function() { $("#time").css("opacity", "0");}}],
+						[{ timing : 0, procedure: function() {$("#ticker").addClass("scaleOut"); $("#time").css("visibility","visible");}},
+						 { timing : 10, procedure: function() {$("#ticker").prop("class","rotatingease"); $("#ticker").css("width", "500px"); $("#ticker").css("height", "500px"); $("#ticker").css("margin", "290px 0 0 710px"); $("#ticker").css("opacity", "1");}},
+						 { timing : 60, procedure: function() {$("#time").prop("class", "color1"); $("#ticker").prop("class", "bordercolor1"); $("#time").css("color", "rgba(255, 247, 201)"); $("#ticker").css("border-left-color", "rgba(255, 247, 201, 0.7)"); $("#ticker").css("border-right-color", "rgba(255, 247, 201, 0.7)"); $("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)"); $("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");}},
+						 { timing : 61, procedure: function() {$("#ticker").prop("class", "rotatingease");}},
+						 { timing : 120, procedure: function() {$("#time").prop("class", "color2"); $("#ticker").prop("class", "bordercolor2"); $("#time").css("color", "rgba(241, 180, 139)"); $("#ticker").css("border-left-color", "rgba(241, 180, 139, 0.7)"); $("#ticker").css("border-right-color", "rgba(241, 180, 139, 0.7)"); $("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)"); $("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");}},
+						 { timing : 121, procedure: function() {$("#ticker").prop("class", "rotatingease");}},
+						 { timing : 180, procedure: function() {$("#wall").prop("class", "bgopacity"); $("#time").prop("class", "color3"); $("#ticker").prop("class", "bordercolor3"); $("#time").css("color", "rgba(223, 113, 86)"); $("#ticker").css("border-left-color", "rgba(223, 113, 86, 0.7)"); $("#ticker").css("border-right-color", "rgba(223, 113, 86, 0.7)"); $("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)"); $("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");}},
+						 { timing : 181, procedure: function() {$("#ticker").prop("class", "rotatingease"); }},
+						 { timing : 240, procedure: function() {$("#wall").prop("class", "bgmove"); $("#wall").css("opacity", "1"); $("#particles-js").prop("class", "fadein"); $("#time").prop("class", "color4"); $("#ticker").prop("class", "bordercolor4"); $("#time").css("color", "rgba(240, 58, 58)"); $("#ticker").css("border-left-color", "rgba(240, 58, 58, 0.7)"); $("#ticker").css("border-right-color", "rgba(240, 58, 58, 0.7)"); $("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)"); $("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");}},
+						 { timing : 241, procedure: function() {$("#ticker").prop("class", "rotatingease");}},
+						 { timing : 290, procedure: function() {$("#time").prop("class", "fadeout"); $("#ticker").prop("class", "fadeoutticker");}},
+						 { timing : 300, procedure: function() {$("#time").css("opacity", "0");}}]];
+	config.progress = 312000;
+	config.starting = 11000;
 	var rAFCallback;
 	$("#tooltip").prop("class", "fadeoutfast");
 
-	function start(){
+	function initt() {
+		if($("#bgmsrc").prop("src").indexOf("4.mp3") >= 0) {
+			config.progress = 192000;
+			config.schedule = schedules[0];
+		}
+		else {
+			config.progress = 312000;
+			config.schedule = schedules[1];
+		}
+		
+		rAFCallback = function(callback) {
+			if(!initialzied) {
+				initialzied = true;
+				initcount = callback;
+			}
+			let pass = Math.floor((callback - initcount - config.starting) / 1000);
+			console.log(pass);
+			for(var i=0; i<config.schedule.length; i++) {
+				if(pass == config.schedule[i].timing) {
+					if(toggles[i] == 0) {
+						toggles[i] = 1;
+						config.schedule[i].procedure();
+					}
+				}
+			}
+			if(pass >= 0) {
+				if(callback-initcount>=config.starting) width = (callback-initcount-config.starting)/(config.progress-config.starting-1000)*100;
+				bar1.set(width, false);
+				if(callback-initcount-config.starting>=0) {
+					let time = config.progress - callback-initcount;
+					let s = Math.floor((time /  1000)) % 60;
+					let m = Math.floor((time / 60000)) % 60;
+					$("#m").html("0"+m.toString());
+					if(s>9) $("#s").html(s.toString()); else $("#s").html("0"+s.toString());
+				}
+			}
+			rAF_ID = requestAnimationFrame(rAFCallback);
+		}
+	}
+
+	function start() {
 		initt();
 		if(started == false) {
 			started = true;
 			bar1 = new ldBar("#bar");
 			bar1.set(0, false);
 			var worker = new Worker('worker.js');
-			// request animation frame on render
-			if($("#bgmsrc").prop("src").indexOf("4.mp3") >= 0) progress = 192000;
-			end = Date.now() + progress;
 			document.getElementById("bgm").play();
 			rAF_ID = requestAnimationFrame( rAFCallback );
 		}
-	}
-
-	function initt() {
-		if($("#bgmsrc").prop("src").indexOf("4.mp3") >= 0) {
-		progress = 192000;
-		starting = 11000;
-		lm = 3;
-		ls = 0;
-		rAFCallback = function(callback) {
-			if(initialzied == false) {
-				initialzied = true;
-				initcount = callback;
-			}
-			let count = callback - initcount;
-
-			let pass = Math.floor((count-starting) / 1000);
-			if(pass == 0) {
-				if(toggles[0] == 0) {
-					toggles[0] = 1;
-					$("#ticker").addClass("scaleOut");
-					$("#time").css("visibility","visible");
-				}
-			}
-			if(pass == 10) {
-				if(toggles[1] == 0) {
-					toggles[1] = 1;
-					$("#ticker").prop("class","rotatingease");
-					$("#ticker").css("width", "500px");
-					$("#ticker").css("height", "500px");
-					$("#ticker").css("margin", "290px 0 0 710px");
-					$("#ticker").css("opacity", "1");
-				}
-			}
-			if(pass == 60) {
-				if(toggles[2] == 0) {
-					toggles[2] = 1;
-					$("#wall").prop("class", "bgopacity");
-					$("#time").prop("class", "color32");
-					$("#ticker").prop("class", "bordercolor32");
-					$("#time").css("color", "rgba(255, 129, 79)");
-					$("#ticker").css("border-left-color", "rgba(255, 129, 79, 0.7)");
-					$("#ticker").css("border-right-color", "rgba(255, 129, 79, 0.7)");
-					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-				}
-			}
-			if(pass == 61) {
-				if(toggles[3] == 0) {
-					toggles[3] = 1;
-					$("#ticker").prop("class", "rotatingease");
-				}
-			}
-			if(pass == 120) {
-				if(toggles[4] == 0) {
-					toggles[4] = 1;
-					$("#wall").prop("class", "bgmove");
-					$("#wall").css("opacity", "1");
-					$("#particles-js").prop("class", "fadein");
-					$("#time").prop("class", "color33");
-					$("#ticker").prop("class", "bordercolor33");
-					$("#time").css("color", "rgba(216, 0, 0)");
-					$("#ticker").css("border-left-color", "rgba(216, 0, 0, 0.7)");
-					$("#ticker").css("border-right-color", "rgba(216, 0, 0, 0.7)");
-					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-				}
-			}
-			if(pass == 121) {
-				if(toggles[5] == 0) {
-					toggles[5] = 1;
-					$("#ticker").prop("class", "rotatingease");
-				}
-			}
-			if(pass == 170) {
-				if(toggles[10] == 0) {
-					toggles[10] = 1;
-					$("#time").prop("class", "fadeout");
-					$("#ticker").prop("class", "fadeoutticker");
-				}
-			}
-			if(pass == 180) {
-				if(toggles[6] == 0) {
-					toggles[6] = 1;
-					$("#time").css("opacity", "0");
-				}
-			}
-			if(pass >= 0) {
-				if(count>=starting) width = (count-starting)/1800;
-				bar1.set(width, false);
-				if(count-starting>=0) {
-					let time = progress - count;
-					let s = Math.floor((time /  1000)) % 60;
-					let m = Math.floor((time / 60000)) % 60;
-					$("#m").html("0"+m.toString());
-					if(s>9) $("#s").html(s.toString()); else $("#s").html("0"+s.toString());
-				}
-			}
-			
-			rAF_ID = requestAnimationFrame( rAFCallback );
-		}
-	}
-	else {
-		rAFCallback = function(callback) {
-			if(initialzied == false) {
-				initialzied = true;
-				initcount = callback;
-			}
-			let count = callback - initcount;
-
-			let pass = Math.floor((count-starting) / 1000);
-			if(pass == 0) {
-				if(toggles[0] == 0) {
-					toggles[0] = 1;
-					$("#ticker").addClass("scaleOut");
-					$("#time").css("visibility","visible");
-				}
-			}
-			if(pass == 10) {
-				if(toggles[1] == 0) {
-					toggles[1] = 1;
-					$("#ticker").prop("class","rotatingease");
-					$("#ticker").css("width", "500px");
-					$("#ticker").css("height", "500px");
-					$("#ticker").css("margin", "290px 0 0 710px");
-					$("#ticker").css("opacity", "1");
-				}
-			}
-			if(pass == 60) {
-				if(toggles[2] == 0) {
-					toggles[2] = 1;
-					$("#time").prop("class", "color1");
-					$("#ticker").prop("class", "bordercolor1");
-					$("#time").css("color", "rgba(255, 247, 201)");
-					$("#ticker").css("border-left-color", "rgba(255, 247, 201, 0.7)");
-					$("#ticker").css("border-right-color", "rgba(255, 247, 201, 0.7)");
-					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-				}
-			}
-			if(pass == 61) {
-				if(toggles[3] == 0) {
-					toggles[3] = 1;
-					$("#ticker").prop("class", "rotatingease");
-				}
-			}
-			if(pass == 120) {
-				if(toggles[4] == 0) {
-					toggles[4] = 1;
-					$("#time").prop("class", "color2");
-					$("#ticker").prop("class", "bordercolor2");
-					$("#time").css("color", "rgba(241, 180, 139)");
-					$("#ticker").css("border-left-color", "rgba(241, 180, 139, 0.7)");
-					$("#ticker").css("border-right-color", "rgba(241, 180, 139, 0.7)");
-					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-				}
-			}
-			if(pass == 121) {
-				if(toggles[5] == 0) {
-					toggles[5] = 1;
-					$("#ticker").prop("class", "rotatingease");
-				}
-			}
-			if(pass == 180) {
-				if(toggles[6] == 0) {
-					toggles[6] = 1;
-					$("#wall").prop("class", "bgopacity");
-					$("#time").prop("class", "color3");
-					$("#ticker").prop("class", "bordercolor3");
-					$("#time").css("color", "rgba(223, 113, 86)");
-					$("#ticker").css("border-left-color", "rgba(223, 113, 86, 0.7)");
-					$("#ticker").css("border-right-color", "rgba(223, 113, 86, 0.7)");
-					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-				}
-			}
-			if(pass == 181) {
-				if(toggles[7] == 0) {
-					toggles[7] = 1;
-					$("#ticker").prop("class", "rotatingease"); 
-				}
-			}
-			if(pass == 240) {
-				if(toggles[8] == 0) {
-					toggles[8] = 1;
-					$("#wall").prop("class", "bgmove");
-					$("#wall").css("opacity", "1");
-					$("#particles-js").prop("class", "fadein");
-					$("#time").prop("class", "color4");
-					$("#ticker").prop("class", "bordercolor4");
-					$("#time").css("color", "rgba(240, 58, 58)");
-					$("#ticker").css("border-left-color", "rgba(240, 58, 58, 0.7)");
-					$("#ticker").css("border-right-color", "rgba(240, 58, 58, 0.7)");
-					$("#ticker").css("border-top-color", "rgba(0, 0, 0, 0)");
-					$("#ticker").css("border-bottom-color", "rgba(0, 0, 0, 0)");
-				}
-			}
-			if(pass == 241) {
-				if(toggles[9] == 0) {
-					toggles[9] = 1;
-					$("#ticker").prop("class", "rotatingease");
-				}
-			}
-			if(pass == 290) {
-				if(toggles[10] == 0) {
-					toggles[10] = 1;
-					$("#time").prop("class", "fadeout");
-					$("#ticker").prop("class", "fadeoutticker");
-				}
-			}
-			if(pass == 300) {
-				if(toggles[11] == 0) {
-					toggles[11] = 1;
-					$("#time").css("opacity", "0");
-				}
-			}
-			if(pass >= 0) {
-				if(count>=starting) width = (count-starting)/3000;
-				bar1.set(width, false);
-				if(count-starting>=0) {
-					let time = progress - count;
-					let s = Math.floor((time /  1000)) % 60;
-					let m = Math.floor((time / 60000)) % 60;
-					$("#m").html("0"+m.toString());
-					if(s>9) $("#s").html(s.toString()); else $("#s").html("0"+s.toString());
-				}
-			}
-			
-			rAF_ID = requestAnimationFrame( rAFCallback );
-		}
-	}
 	}
 </script>
 </body>
