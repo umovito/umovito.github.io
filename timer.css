@@ -140,6 +140,40 @@ canvas {
     animation-direction: normal;
     animation-fill-mode: forwards;
 }
+@keyframes opacityOut {
+    0% {
+        opacity: 1;
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 0;
+        filter: blur(50px);
+    }
+}
+.opacityOut {
+    animation-name: opacityOut;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.75, 0, 0.75, 0);
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+@keyframes opacityIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.opacityIn {
+    animation-name: opacityIn;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(0.75, 0, 0.75, 0);
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
 @keyframes fadeOutTicker {
     0% {
         opacity: 1;
@@ -427,4 +461,37 @@ canvas {
 }
 #config {
     display:none;
+}
+#outline {
+    overflow: visible;
+    position: fixed;
+    display: block;
+    width: 1920px;
+    height: 1080px;
+    top: 905px;
+    left: -5px;
+}
+.pathstroke {
+    stroke-dasharray: 3250;
+    stroke-dashoffset: 3250;
+    animation: dash 60s linear infinite;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 3250;
+        stroke-dashoffset: 3250;
+    }
+    88% {
+        stroke-dasharray: 3250;
+        stroke-dashoffset: 6500;
+    }
+    98% {
+        stroke-dasharray: 3250;
+        stroke-dashoffset: 6500;
+    }
+    100% {
+        stroke-dasharray: 3250;
+        stroke-dashoffset: 3250;
+    }
 }
