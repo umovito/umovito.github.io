@@ -152,7 +152,7 @@ canvas {
 }
 .opacityOut {
     animation-name: opacityOut;
-    animation-duration: 2s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-timing-function: cubic-bezier(0.75, 0, 0.75, 0);
     animation-direction: normal;
@@ -168,7 +168,7 @@ canvas {
 }
 .opacityIn {
     animation-name: opacityIn;
-    animation-duration: 2s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-timing-function: cubic-bezier(0.75, 0, 0.75, 0);
     animation-direction: normal;
@@ -472,11 +472,16 @@ canvas {
     left: -5px;
 }
 .pathstroke {
+    /*
     stroke-dasharray: 3250;
     stroke-dashoffset: 3250;
-    animation: dash 60s linear infinite;
+    */
+    stroke-dasharray: 0 4000;
+    stroke-dashoffset: 0;
+    animation: dash 90s linear infinite;
 }
 
+/*
 @keyframes dash {
     0% {
         stroke-dasharray: 3250;
@@ -493,5 +498,16 @@ canvas {
     100% {
         stroke-dasharray: 3250;
         stroke-dashoffset: 3250;
+    }
+}
+*/
+@keyframes dash {
+    0% {
+        stroke-dasharray: 0 2000;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: 1000 0;
+        stroke-dashoffset: 2000;
     }
 }
