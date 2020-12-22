@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: rgb(83, 20, 97); display: block; position: relative; shape-rendering: auto;" width="131" height="131" preserveAspectRatio="xMidYMid" viewBox="0 0 131 131"><g transform="scale(0.51)"><g transform="translate(173.58464630673697,138.30799078598557)"><g transform="rotate(0)"><g transform="translate(9.58201 0)">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: rgb(12, 36, 7); display: block; position: relative; shape-rendering: auto;" width="131" height="131" preserveAspectRatio="xMidYMid" viewBox="0 0 131 131"><g transform="scale(0.51)"><g transform="translate(173.58464630673697,138.30799078598557)"><g transform="rotate(0)"><g transform="translate(9.58201 0)">
 <line x1="-5" x2="5" y1="0" y2="0" stroke="#ff243a" stroke-linecap="round" stroke-width="3" transform="scale(0.4791 0.4791)">
 <animateTransform attributeName="transform" type="scale" dur="1s" repeatCount="indefinite" keyTimes="0;0.5;1" values="0;1;0" begin="-0.6406942005420971s"></animateTransform>
 </line>
