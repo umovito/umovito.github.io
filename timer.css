@@ -356,10 +356,10 @@ canvas {
     display: block;
     opacity: 0.2;
     background: 
-        radial-gradient(at top left, rgba(68, 52, 141, 0.5), transparent 4000px),
-        radial-gradient(at top right,rgba(13, 99, 66, 0.5), transparent 3300px),
-        radial-gradient(at bottom left, rgba(17, 134, 134, 0.5), transparent 2400px),
-        radial-gradient(at bottom right, rgba(129, 28, 50, 0.5), transparent 4000px);
+        radial-gradient(at top left, rgba(68, 52, 141, 0.8), transparent 4000px),
+        radial-gradient(at top right,rgba(13, 99, 66, 0.8), transparent 3300px),
+        radial-gradient(at bottom left, rgba(17, 134, 134, 0.8), transparent 2400px),
+        radial-gradient(at bottom right, rgba(129, 28, 50, 0.8), transparent 4000px);
 }
 @keyframes bgmove {
     0% {
@@ -472,42 +472,30 @@ canvas {
     left: -5px;
 }
 .pathstroke {
-    /*
-    stroke-dasharray: 3250;
-    stroke-dashoffset: 3250;
-    */
-    stroke-dasharray: 0 4000;
+    stroke-dasharray: 0 2000;
     stroke-dashoffset: 0;
-    animation: dash 90s linear infinite;
+    animation: dash 60s linear infinite;
 }
 
-/*
-@keyframes dash {
-    0% {
-        stroke-dasharray: 3250;
-        stroke-dashoffset: 3250;
-    }
-    88% {
-        stroke-dasharray: 3250;
-        stroke-dashoffset: 6500;
-    }
-    98% {
-        stroke-dasharray: 3250;
-        stroke-dashoffset: 6500;
-    }
-    100% {
-        stroke-dasharray: 3250;
-        stroke-dashoffset: 3250;
-    }
-}
-*/
 @keyframes dash {
     0% {
         stroke-dasharray: 0 2000;
         stroke-dashoffset: 0;
     }
-    100% {
+    85% {
         stroke-dasharray: 1000 0;
         stroke-dashoffset: 2000;
+    }
+    96% {
+        stroke-dasharray: 1000 0;
+        stroke-dashoffset: 2000;
+    }
+    97% {
+        stroke-dasharray: 500 100;
+        stroke-dashoffset: 2500;
+    }
+    100% {
+        stroke-dasharray: 0 200;
+        stroke-dashoffset: 3000;
     }
 }
