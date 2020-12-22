@@ -492,7 +492,7 @@ canvas {
     }
     97% {
         stroke-dasharray: 500 100;
-        stroke-dashoffset: 2500;
+        stroke-dashoffset: 2200;
     }
     100% {
         stroke-dasharray: 0 200;
