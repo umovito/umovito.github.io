@@ -1,0 +1,84 @@
+<html><head></head><body>
+<table id="caretable" style="border-collapse: collapse;margin-bottom: 50px;">
+    <tr>
+        <th colspan="4" style="width: 120px; height: 60px; text-align: left; font-weight: bold;border: 2px solid black;background-color: #ffffff;">1. Care 내용</th>
+    </tr>
+    <tr>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">업체명</th>
+        <td style="height: 60px;width: 360px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="masterEntpName">${masterEntpName}</span><br>(하위업체: <span id="entpName">${entpName}</span>)</td>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">상품명</th>
+        <td style="height: 60px;width: 200px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="goodsName">${goodsName}</span></td>
+    </tr>
+    <tr>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">업체코드</th>
+        <td style="height: 60px;width: 360px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="entpCode">${entpCode}</span></td>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">상품코드</th>
+        <td style="height: 60px;width: 200px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="goodsCode">${goodsCode}</span></td>
+    </tr>
+    <tr>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">방송일자<br>(판매일자)</th>
+        <td style="height: 60px;width: 360px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="saleDate">${saleDate}</span></td>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">Care 진행일자</th>
+        <td style="height: 60px;width: 200px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="careDate">${careDate}</span></td>
+    </tr>
+    <tr> 
+        <th rowspan="2" style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">Care 구분</th>
+        <td style="height: 60px;width: 360px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="cmpstnGb">${cmpstnGb}</span></td>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">Care 건수</th>
+        <td style="height: 60px;width: 200px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="cmpstnCnt">${cmpstnCnt}</span>건</td>
+    </tr>
+    <tr>
+        <td style="height: 60px;"></td>
+        <th rowspan="2" style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">발생사유</th>
+        <td rowspan="2" style="height: 60px;width: 200px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="cmpstnReason">${cmpstnReason}</span></td>
+    </tr>
+    <tr>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">콜 구분</th>
+        <td style="height: 60px;width: 360px;text-align: center;border: 2px solid black;background-color: #ffffff;">
+            <c:if test="${obYn eq '1'}">
+                <input id="obYn" type="checkbox" disabled checked/>OB&nbsp;&nbsp;&nbsp;&nbsp;
+            </c:if>
+            <c:if test="${obYn eq '0'}">
+                <input id="obYn" type="checkbox" disabled/>OB&nbsp;&nbsp;&nbsp;&nbsp;
+            </c:if>
+            <c:if test="${lmsYn eq '1'}">
+            <input id="lmsYn" type="checkbox" disabled checked/>LMS&nbsp;&nbsp;&nbsp;&nbsp;
+            </c:if>
+            <c:if test="${lmsYn eq '0'}">
+            <input id="lmsYn" type="checkbox" disabled/>LMS&nbsp;&nbsp;&nbsp;&nbsp;
+            </c:if>
+            <input id="chkEtc" type="checkbox"/>기타
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4" style="width: 120px; height: 60px; text-align: left; font-weight: bold;border: 2px solid black;background-color: #ffffff;">2. 협력사 정산 반영</th>
+    </tr>
+    <tr>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">Care 보상건수</th>
+        <td style="height: 60px;width: 360px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="cmpstnCnt">${cmpstnCnt}</span>건</td>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">Care 보상금액</th>
+        <td style="height: 60px;width: 200px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="cmpstnAmt">${cmpstnAmt}</span>원</td>
+    </tr>
+    <tr>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">공제금액</th>
+        <td style="height: 60px;width: 360px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="deductQty">${deductAmt}</span>원</td>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">정산반영 차수<br>(지급일자)</th>
+        <td style="height: 60px;width: 200px;text-align: center;border: 2px solid black;background-color: #ffffff;"><span id="adjustMonth">${adjustMonth}</span>월 <span id="adjustCnt">${adjustCnt}</span>차</td>
+    </tr>
+    <tr>
+        <th colspan="4" style="width: 120px; height: 60px; text-align: left; font-weight: bold;border: 2px solid black;background-color: #ffffff;">3. 회계처리</th>
+    </tr>
+    <tr>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">계정과목</th>
+        <td style="height: 60px;width: 200px;text-align: left;padding-left: 20px;border: 2px solid black;background-color: #ffffff;" colspan="3">${accountTarget}</td>
+    </tr>
+    <tr>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">계정코드</th>
+        <td style="height: 60px;width: 200px;text-align: left;padding-left: 20px;border: 2px solid black;background-color: #ffffff;" colspan="3">${accountCode}</td>
+    </tr>
+    <tr>
+        <th style="width: 120px;text-align: center;font-weight: bold;border: 2px solid black;background-color: #ebebeb;">귀속부서</th>
+        <td style="height: 60px;width: 200px;text-align: left;padding-left: 20px;border: 2px solid black;background-color: #ffffff;" colspan="3">${accountDiv}</td>
+    </tr>
+</table>
+</body></html>
