@@ -354,7 +354,8 @@ canvas {
     width: 4000px;
     height: 4000px;
     display: block;
-    opacity: 0.2;
+    /*opacity: 0.2;*/
+    opacity: 0;
     background: 
         radial-gradient(at top left, rgba(68, 52, 141, 0.8), transparent 4000px),
         radial-gradient(at top right,rgba(13, 99, 66, 0.8), transparent 3300px),
