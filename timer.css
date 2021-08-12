@@ -54,21 +54,6 @@ canvas {
     opacity: 0;
     background-color: rgba(0,0,0,0);
 }
-#ticker2 {
-    position:absolute;
-    width: 1004px;
-    height: 1004px;
-    margin: 38px 0 0 458px;
-    top: 0px;
-    left: 0px;
-    border-left: 10px solid rgba(211, 211, 211, 0.5);
-    border-top: 10px solid rgba(0, 0, 0, 0);
-    border-right: 10px solid rgba(0, 0, 0, 0);
-    border-bottom: 10px solid rgba(0, 0, 0, 0);
-    border-radius: 50%;
-    opacity: 0;
-    background-color: rgba(0,0,0,0);
-}
 @keyframes rotating {
     0% {
         transform: rotate(0deg);
@@ -82,17 +67,10 @@ canvas {
 }
 .rotatingease {
     animation-name: rotating;
-    animation-duration: 1.88s;
+    animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-direction: normal;
     animation-timing-function: ease;
-}
-.rotatinglinear {
-    animation-name: rotating;
-    animation-duration: 0.188s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-timing-function: linear;
 }
 .rotating {
     animation-name: rotating;
@@ -106,6 +84,7 @@ canvas {
         width: 1000px;
         height: 1000px;
         margin: 40px 0 0 460px;
+        border-radius: 500px;
         opacity: 0;
         transform: rotate(0deg);
     }
@@ -120,27 +99,6 @@ canvas {
 .scaleOut.rotating {
     animation: scaleOut 10s normal 1 forwards;
     animation-timing-function: cubic-bezier(0, 0.75, 0.75, 1);
-    animation-fill-mode: forwards;
-}
-@keyframes scaleOut2 {
-    0% {
-        width: 1004px;
-        height: 1004px;
-        margin: 38px 0 0 448px;
-        opacity: 0;
-        transform: rotate(0deg);
-    }
-    100% {
-        width: 540px;
-        height: 540px;
-        margin: 270px 0 0 690px;
-        opacity: 1;
-        transform: rotate(20520deg);
-    }
-}
-.scaleOut2.rotatinglinear {
-    animation: scaleOut2 10s normal 1 forwards;
-    animation-timing-function: linear;
     animation-fill-mode: forwards;
 }
 #s {
@@ -375,7 +333,7 @@ canvas {
 }
 #tooltip {
     position: fixed;
-    font-size: 200px;
+    font-size: 100px;
     color: white;
     background: black;
     top: 0px;
@@ -383,7 +341,7 @@ canvas {
 }
 .fadeoutfast {
     animation-name: fadeOut;
-    animation-duration: 2s;
+    animation-duration: 3.5s;
     animation-iteration-count: 1;
     animation-direction: normal;
     animation-timing-function: cubic-bezier(0.75, 0, 0.75, 0);
@@ -403,7 +361,6 @@ canvas {
         radial-gradient(at top right,rgba(13, 99, 66, 0.8), transparent 3300px),
         radial-gradient(at bottom left, rgba(17, 134, 134, 0.8), transparent 2400px),
         radial-gradient(at bottom right, rgba(129, 28, 50, 0.8), transparent 4000px);
-    filter: blur(1em);
 }
 @keyframes bgmove {
     0% {
@@ -504,21 +461,8 @@ canvas {
     animation-direction: normal;
 }
 #config {
-    display: block;
-    width: 500px;
-    height: 500px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    margin: 100px auto 0px auto;
-    background-color: rgba(50, 50, 50, .5);
-    z-index: 999;
+    display:none;
 }
-.configSelect {
-    width: 100px;
-    height: 50px;
-}
-
 #outline {
     overflow: visible;
     position: fixed;
